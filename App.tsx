@@ -16,6 +16,8 @@ import { DigitBuilder, trunc } from "./Constants/numbers"
 import output from './Constants/tokens';
 import { Variables } from './Constants/Variables';
 
+import calculator from "./Constants/calculator";
+
 const Body = styled.View`
   width: 100%;
   height: 100%;
@@ -72,8 +74,7 @@ export default function App() {
   }
 
   const evaluateQueue = () => {
-    return history;
-//    return Number(eval(history));
+    return calculator(queue);
   }
 
   const equals = () => {

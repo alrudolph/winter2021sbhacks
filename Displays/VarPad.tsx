@@ -63,7 +63,7 @@ export function VarView({varName, store, retreive, mode, display, setMode}: {var
 						if (mode === "store") {
 							setVarVal(store());
 						}
-						else if (mode === "retreive") {
+						else if (mode === "retreive" && varVal) {
 							retreive();
 						}
 						setMode("retreive");
@@ -88,7 +88,7 @@ export default function VarPad({append, back, currVal, currDisplay}: {append: Fu
 						<VarView
 							varName={value}
 							display={obj.display}
-							retreive={() => append({ type: "variable", which: value, value: currVal, display: value })}
+							retreive={() => append({ type: "variable", which: value, value: obj.value, display: value })}
 							mode={mode}
 							key={idx}
 							setMode={setMode}
@@ -103,7 +103,7 @@ export default function VarPad({append, back, currVal, currDisplay}: {append: Fu
 			<VarRow style={{flex: 1}}>
 				<View style={{width: "50%"}} />
 				<ButtonPartLmao style={{justifyContent: "flex-end"}}>
-					<LongBoi color={Orange} text="save" onTouch={() => { setMode("store") }}
+					<LongBoi color={Orange} text="save" onTouch={() => { mode === "store" ? setMode("retreive") : setMode("store") }}
 						style={{alignSelf: "flex-end"}}/>
 				</ButtonPartLmao>
 				<ButtonPartLmao>

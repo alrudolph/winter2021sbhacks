@@ -6,22 +6,22 @@ export const VariablesContext = createContext(null);
 export const Variables = (props) => {
 
     const [vars, setVars] = useState({
-        'a': {
+        'A': {
             type: 'number',
             value: 0,
             display: ''
         },
-        'b': {
+        'B': {
             type: 'number',
             value: 0,
             display: ''
         },
-        'c': {
+        'C': {
             type: 'number',
-            value: 1,
-            display: '1'
+            value: 0,
+            display: ''
         },
-        'd': {
+        'D': {
             type: 'number',
             value: 0,
             display: ''
