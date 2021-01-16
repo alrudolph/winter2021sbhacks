@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TouchableHighlight, tyleSheet, Text, View } from 'react-native';
 
 import styled from 'styled-components/native';
@@ -16,15 +16,15 @@ type CircleInput = {
   secondaryColor: string,
   textColor: string,
   text: string,
-  callback: Function
+  onTouch: Function
 };
 
-export default function Circle({ primaryColor, secondaryColor, textColor, text, callback }: CircleInput) {
+export default function Circle({ primaryColor, secondaryColor, textColor, text, onTouch }: CircleInput) {
   return (
     <Circ color={primaryColor}>
       <TouchableHighlight
           underlayColor={secondaryColor}
-          onPress = {() => {callback()}}  
+          onPress = {() => {onTouch()}}  
       >
         <Display color={textColor}>{text}</Display>
       </TouchableHighlight>

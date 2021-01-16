@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import Keypad from './Displays/Keypad'
+import Circle from '../Buttons/Circle';
 
-export default function App() {
+export default function Keypad() {
   return (
     <View>
-      <Keypad />
+
+
+
     </View>
   );
 }
