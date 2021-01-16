@@ -2,13 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import styled from 'styled-components/native';
+import { White } from '../GlobalComponents/Palette';
 
 const Display = styled.Text`
     width: 100%;
     height: 60%;
-    color: inherit;
-    font-size: 450%;
-
+    font-size: 64px;
+    color: ${White};
+    
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;

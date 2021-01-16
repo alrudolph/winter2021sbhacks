@@ -6,7 +6,7 @@ import { White, DarkGray, LightGray, Orange } from '../GlobalComponents/Palette'
 import Circle from '../Buttons/Circle';
 
 const Display = styled.View`
-    height: 75%;
+    height: 65%;
     display: flex;
     justify-content: space-evenly;
 `

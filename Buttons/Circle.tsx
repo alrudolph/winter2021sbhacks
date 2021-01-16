@@ -6,12 +6,12 @@ import { White } from '../GlobalComponents/Palette';
 
 const Display = styled.Text`
   color: ${(props: {color: string}) => props.color};
-  font-size: 200%;
+  font-size: 32px;
 `
 
 const Circ = styled.TouchableHighlight`
   background-color: ${({color}: {color: string}) => color};
-  border-radius: 50%;
+  border-radius: 50px;
 
   height: 75px;
   width: 75px;
@@ -38,5 +38,3 @@ export default function Circle({ color, text, onTouch }: CircleInput) {
       </Circ>
   );
 }
-
-
