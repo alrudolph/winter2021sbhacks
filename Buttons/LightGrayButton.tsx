@@ -6,7 +6,7 @@ import { White, LightGray } from '../GlobalComponents/Palette';
 export default function LightGrayButton({ onTouch, text }: { onTouch: Function, text: string }) {
   return (
     <Circle
-	color={LightGray}
+	      color={LightGray}
         textColor={White}
         onTouch={onTouch}
         text={text}

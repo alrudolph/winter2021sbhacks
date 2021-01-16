@@ -13,17 +13,17 @@ const Display = styled.View`
 `
 
 const Row = styled.View`
-    background-color: ${props => ( props.yes ? "red" : "none")};
-    
+    flex-grow: 1;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
 `;
 
 export default function Keypad() {
   return (
     <Display>
-        <Row yes={true}>
+        <Row>
             <LightGrayButton text="AC" onTouch={() => {alert("HELLO")}} />
             <LightGrayButton text="V" onTouch={() => {alert("HELLO")}} />
             <LightGrayButton text="." onTouch={() => {alert("HELLO")}} />

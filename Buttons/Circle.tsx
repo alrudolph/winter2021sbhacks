@@ -9,13 +9,13 @@ const Display = styled.Text`
 `
 
 const Circ = styled.TouchableHighlight`
-background-color: ${({color}: {color: string}) => color};
+  background-color: ${({color}: {color: string}) => color};
   border-radius: 50%;
-  height: ${(props: {size: number}) => props.size}px;
-  width: ${(props: {size: number}) => props.size}px;
-  justify-content: "center";
 
+  height: 75px;
+  width: 75px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
@@ -27,11 +27,9 @@ interface CircleInput {
   onTouch: Function
 };
 
-
 export default function Circle({ color, textColor, text, onTouch }: CircleInput) {
   return (
       <Circ 
-        size={75}
         onPress={() => { onTouch(); }} 
         color={color.primary} 
         underlayColor={color.secondary}

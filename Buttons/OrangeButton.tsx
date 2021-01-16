@@ -6,7 +6,7 @@ import { White, Orange } from '../GlobalComponents/Palette';
 export default function OrangeButton({ onTouch, text }: { onTouch: Function, text: string }) {
   return (
     <Circle
-	color={Orange}
+	      color={Orange}
         textColor={White}
         onTouch={onTouch}
         text={text}
