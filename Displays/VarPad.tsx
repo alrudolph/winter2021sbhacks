@@ -41,6 +41,7 @@ const Display = styled.View`
     display: flex;
     flex: 1;
     height: 60%;
+    justify-content: space-evenly;
 `
 
 export function VarView({varName, append}: {varName: string, append: Function}){
@@ -65,6 +66,12 @@ export default function VarPad({append, back}: {append: Function, back: Function
     	   <VarView varName="D" append={(input: string) => { append(input); }} />
     	   <VarView varName="E" append={(input: string) => { append(input); }} />
     	   <VarView varName="F" append={(input: string) => { append(input); }} />
-	   <Circle color={Orange} text="←" onTouch={() => { back(); }} />
+	   <VarRow>
+		<View style={{flex: .75}} />
+		<ButtonPartLmao>
+			<Circle color={Orange} text="←" onTouch={() => {back();}}/>
+		</ButtonPartLmao>
+	  </VarRow>
+		
     	</Display>
 );}
