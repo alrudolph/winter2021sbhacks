@@ -67,8 +67,12 @@ export default function App() {
     setExpression({ queue: [], history: "", val: "" })
   }
 
+  const evaluateQueue = () => {
+    return Number(eval(history));
+  }
+
   const equals = () => {
-    setExpression({ queue: queue, history: history, val: history ? Math.round(eval(history) * 1000) / 1000: ""});
+    setExpression({ queue: queue, history: history, val: history ? Math.round(evaluateQueue() * 1000) / 1000: ""});
   }
   
   const showVar = () => {
@@ -90,9 +94,11 @@ export default function App() {
 	          showVar={() => { showVar(); }}
         />
       ) : (
-        <VarPad append={(input: Types) => { append(input); }}
-		back={() => { back(); }}
-	/>
+        <VarPad 
+          append={(input: Types) => { append(input); }}
+          back={() => { back(); }}
+          current={evaluateQueue()}
+	      />
       )}
     </Body>
   );
