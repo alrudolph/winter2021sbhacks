@@ -27,7 +27,7 @@ const ButtonPartLmao = styled.View`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
 	width: 25%;
 `;
 
@@ -57,7 +57,7 @@ export function VarView({varName, append}: {varName: string, append: Function}){
 		</Display>
 );}
 
-export default function VarPad({append}: {append: Function}){
+export default function VarPad({append, back}: {append: Function, back: Function}){
 	return (<Display>
     	   <VarView varName="A" append={(input: string) => { append(input); }} />
     	   <VarView varName="B" append={(input: string) => { append(input); }} />
@@ -65,5 +65,6 @@ export default function VarPad({append}: {append: Function}){
     	   <VarView varName="D" append={(input: string) => { append(input); }} />
     	   <VarView varName="E" append={(input: string) => { append(input); }} />
     	   <VarView varName="F" append={(input: string) => { append(input); }} />
+	   <Circle color={Orange} text="←" onTouch={() => { back(); }} />
     	</Display>
 );}
