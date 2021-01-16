@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Keypad from './Displays/Keypad';
@@ -16,9 +16,9 @@ const Body = styled.View`
 
 export default function App() {
 
-  let history = "1+2+3";
-  let val = eval(history);
-  
+  const [{ history, val }, setExpression] = useState({ history: "", val: "" });
+
+
   return (
     <Body>
       <NumberDisplay history={history} val={val}/>

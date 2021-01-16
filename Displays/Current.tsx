@@ -14,7 +14,7 @@ const Display = styled.Text`
     align-items: flex-end;
 `;
 
-export default function Current({ value }: {value: number}) {
+export default function Current({ value }: {value: string}) {
   return (
     <Display>
         {value}

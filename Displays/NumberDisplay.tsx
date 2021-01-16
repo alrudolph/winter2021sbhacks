@@ -14,7 +14,7 @@ const Display = styled.View`
     color: ${White};
 `
 
-export default function NumberDisplay({ history, val } : {history: string, val:number}) {
+export default function NumberDisplay({ history, val } : {history: string, val:string }) {
   return (
     <Display>
         <History history={history}/>
