@@ -28,7 +28,6 @@ interface CircleInput {
   onTouch: Function
 };
 
-
 export default function Circle({ primaryColor, secondaryColor, textColor, text, onTouch }: CircleInput) {
   return (
       <Circ 
