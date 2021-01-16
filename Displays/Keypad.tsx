@@ -27,13 +27,13 @@ export default function Keypad() {
             <LightGrayButton text="AC" onTouch={() => {alert("HELLO")}} />
             <LightGrayButton text="V" onTouch={() => {alert("HELLO")}} />
             <LightGrayButton text="." onTouch={() => {alert("HELLO")}} />
-            <OrangeButton text="*/*" onTouch={() => {alert("HELLO")}} />
+            <OrangeButton text="÷" onTouch={() => {alert("HELLO")}} />
         </Row>
         <Row>
             <DarkGrayButton text="7" onTouch={() => {alert("HELLO")}} />
             <DarkGrayButton text="8" onTouch={() => {alert("HELLO")}} />
             <DarkGrayButton text="9" onTouch={() => {alert("HELLO")}} />
-            <OrangeButton text="X" onTouch={() => {alert("HELLO")}} />
+            <OrangeButton text="×" onTouch={() => {alert("HELLO")}} />
         </Row>
         <Row>
             <DarkGrayButton text="4" onTouch={() => {alert("HELLO")}} />
