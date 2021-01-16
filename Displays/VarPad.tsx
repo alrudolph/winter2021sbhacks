@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native'
 
+
 import { White, DarkGray, LightGray, Orange } from '../Constants/Palette';
 import Circle from '../Buttons/Circle';
+
+import { VariablesContext } from "../Constants/Variables"
+
+import { trunc } from '../Constants/numbers';
 
 const VarRow = styled.View`
 	flex-grow: 1;
@@ -43,8 +48,8 @@ const Display = styled.View`
     height: 60%;
 `
 
-export function VarView({varName, append, mode, current}: {varName: string, append: Function, mode:string, current:number}){
-	const [varVal, setVarVal] = useState(0);
+export function VarView({varName, store, retreive, mode, display}: {varName: string, store: Function, retreive: Function, mode:string, display: string}){
+	const [varVal, setVarVal] = useState(display);
 
 	return (
 		<Display>
@@ -53,10 +58,10 @@ export function VarView({varName, append, mode, current}: {varName: string, appe
 				<ButtonPartLmao>
 					<Circle color={LightGray} text={varName} onTouch={() => {
 						if (mode === "store") {
-							setVarVal(current);
+							setVarVal(store());
 						}
-						else if (mode === "retrieve") {
-							append(varVal);
+						else if (mode === "retreive") {
+							retreive();
 						}
 					}}/>
 				</ButtonPartLmao>
@@ -65,17 +70,31 @@ export function VarView({varName, append, mode, current}: {varName: string, appe
 		</Display>
 );}
 
-export default function VarPad({append, back, current}: {append: Function, back: Function, current: number}){
+export default function VarPad({append, back, currVal, currDisplay}: {append: Function, back: Function, currVal: number, currDisplay: string}){
 	const [mode, setMode] = useState("store");
+	const [vars, change] = useContext(VariablesContext)
 
 	return (
 		<Display>
-    	   <VarView varName="A" append={(input: string) => { append(input); }} current={current} mode={mode}/>
-    	   <VarView varName="B" append={(input: string) => { append(input); }} current={current} mode={mode}/>
-    	   <VarView varName="C" append={(input: string) => { append(input); }} current={current} mode={mode}/>
-    	   <VarView varName="D" append={(input: string) => { append(input); }} current={current} mode={mode}/>
-    	   <VarView varName="E" append={(input: string) => { append(input); }} current={current} mode={mode}/>
-    	   <VarView varName="F" append={(input: string) => { append(input); }} current={current} mode={mode}/>
+			{
+				Object.keys(vars).map((value, idx) => {
+					const obj = vars[value];
+
+					return (
+						<VarView
+							varName={value}
+							display={obj.display}
+							retreive={() => append({ type: "variable", which: value, value: currVal, display: value })}
+							mode={mode}
+							key={idx}
+							store={() => {
+								change(value, {type: "number", value: currVal, display: currDisplay})
+								return currDisplay;
+							}}
+						/>
+					)
+				})
+			}
 	   		<Circle color={Orange} text="←" onTouch={() => { back(); }} />
 		</Display>
 	)

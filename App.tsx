@@ -12,8 +12,9 @@ import VarPad from './Displays/VarPad';
 import { VarView } from './Displays/VarPad';
 
 import { Types, TokenType, DigitType } from "./Constants/types"
-import { DigitBuilder } from "./Constants/numbers"
+import { DigitBuilder, trunc } from "./Constants/numbers"
 import output from './Constants/tokens';
+import { Variables } from './Constants/Variables';
 
 const Body = styled.View`
   width: 100%;
@@ -27,7 +28,7 @@ type stored = {
 }
 
 export default function App() {
-  const [mode, setMode] = useState("numPad");
+  const [mode, setMode] = useState("num");
 
   const defaultState: stored = { queue: [], history: "", val: ""};
   const [{ queue, history, val }, setExpression] = useState(defaultState);
@@ -61,6 +62,9 @@ export default function App() {
     else if (n.type === "parenthesis") {
       appendQueue(n);
     }
+    else if (n.type === "variable") {
+      appendQueue(n);
+    }
   }
 
   const clear = () => {
@@ -68,11 +72,12 @@ export default function App() {
   }
 
   const evaluateQueue = () => {
-    return Number(eval(history));
+    return history;
+//    return Number(eval(history));
   }
 
   const equals = () => {
-    setExpression({ queue: queue, history: history, val: history ? Math.round(evaluateQueue() * 1000) / 1000: ""});
+    setExpression({ queue: queue, history: history, val: trunc(evaluateQueue())});
   }
   
   const showVar = () => {
@@ -85,21 +90,24 @@ export default function App() {
 
   return (
     <Body>
-      <NumberDisplay history={history} val={val}/>
-      {mode === "num" ? 
-      (<Keypad 
-           append={(input: Types) => { append(input); }}
-           clear={() => { clear(); }}
-           equals={() => { equals(); }}
-	          showVar={() => { showVar(); }}
-        />
-      ) : (
-        <VarPad 
-          append={(input: Types) => { append(input); }}
-          back={() => { back(); }}
-          current={evaluateQueue()}
-	      />
-      )}
+      <Variables>
+        <NumberDisplay history={history} val={val}/>
+        {mode === "num" ? 
+        (<Keypad 
+            append={(input: Types) => { append(input); }}
+            clear={() => { clear(); }}
+            equals={() => { equals(); }}
+              showVar={() => { showVar(); }}
+          />
+        ) : (
+          <VarPad 
+            append={(input: Types) => { append(input); }}
+            back={() => { back(); }}
+            currVal={evaluateQueue()}
+            currDisplay={val}
+          />
+        )}
+      </Variables>
     </Body>
   );
 }
