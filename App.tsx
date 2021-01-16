@@ -27,7 +27,6 @@ export default function App() {
   const defaultState: stored = { queue: [], history: "", val: ""};
   const [{ queue, history, val }, setExpression] = useState(defaultState);
 
-
   useEffect(() => {
     const output = queue.reduce((acc, curr) => acc + curr.display, "");
     setExpression({ queue: queue, history: output, val: val});
@@ -39,7 +38,6 @@ export default function App() {
   }
 
   const append = (n: Types) => {
-
     if (n.type === "digit") {
       const lastElem = queue.length > 0 ? queue[queue.length - 1] : null;
       if (lastElem !== null && lastElem.type == "DigitBuilder") {
@@ -56,12 +54,10 @@ export default function App() {
     else if (n.type === "parenthesis") {
       appendQueue(n);
     }
-
-    console.log(queue);    
   }
 
   const clear = () => {
-    setExpression({ queue: [], history: "", val: val })
+    setExpression({ queue: [], history: "", val: "" })
   }
 
   const equals = () => {
