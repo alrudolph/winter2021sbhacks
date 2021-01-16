@@ -18,11 +18,26 @@ export default function App() {
 
   const [{ history, val }, setExpression] = useState({ history: "1+2+3", val: "5" });
 
+  const append = (n: string) => {
+    setExpression({ history: history + n, val: val})
+  }
+
+  const clear = () => {
+    setExpression({ history: "", val: val })
+  }
+
+  const equals = () => {
+    setExpression({ history: history, val: eval(history)});
+  }
 
   return (
     <Body>
       <NumberDisplay history={history} val={val}/>
-      <Keypad />
+      <Keypad 
+        append={(input: string) => { append(input); }}
+        clear={() => { clear(); }}
+        equals={() => { equals(); }}
+        />
     </Body>
   );
 }
