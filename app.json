@@ -1,0 +1,12 @@
+{
+  "name": "winter2021sbhacks",
+  "displayName": "winter2021sbhacks",
+  "expo": {
+    "name": "winter2021sbhacks",
+    "slug": "winter2021sbhacks",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
