@@ -21,21 +21,20 @@ background-color: ${({color}: {color: string}) => color};
 `;
 
 interface CircleInput {
-  primaryColor: string,
-  secondaryColor: string,
+  color: {primary: string, secondary: string}
   textColor: string,
   text: string,
   onTouch: Function
 };
 
 
-export default function Circle({ primaryColor, secondaryColor, textColor, text, onTouch }: CircleInput) {
+export default function Circle({ color, textColor, text, onTouch }: CircleInput) {
   return (
       <Circ 
         size={75}
         onPress={() => { onTouch(); }} 
-        color={primaryColor} 
-        underlayColor={secondaryColor}
+        color={color.primary} 
+        underlayColor={color.secondary}
         activeOpacity={1}>
           <Display color={textColor}>{text}</Display>
       </Circ>
