@@ -6,25 +6,51 @@ import DarkGrayButton from "../Buttons/DarkGrayButton";
 import LightGrayButton from "../Buttons/LightGrayButton";
 import OrangeButton from "../Buttons/OrangeButton";
 
-const Container = styled.View`
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 20% 20% 20% 20% 20%;
-`;
-
-const Button = styled.View`
-    grid-column-start: ${(props: { x: number, y: number}) => props.x};
-    grid-column-end: ${(props: { x: number, y: number}) => { props.x + 1 }};
-    grid-row-start: ${(props: { x: number, y: number}) => props.y};
-    grid-row-end: ${(props: { x: number, y: number}) => { props.y + 1 }}
+const Display = styled.View`
+    height: 75%;
+    display: flex;
+    justify-content: space-evenly;
 `
+
+const Row = styled.View`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+`;
 
 export default function Keypad() {
   return (
-    <Container>
-        <DarkGrayButton text="+" onTouch={() => {alert("Hello")}} />
-        <OrangeButton text="+" onTouch={() => {alert("Hello")}} />
-        <LightGrayButton text="+" onTouch={() => {alert("Hello")}} />
-    </Container>
+    <Display>
+        <Row>
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+        </Row>
+        <Row>
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+        </Row>
+        <Row>
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+        </Row>
+        <Row>
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+        </Row>
+        <Row>
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+            <DarkGrayButton text="+" onTouch={() => {alert("HELLO")}} />
+        </Row>
+    </Display>
   );
 }

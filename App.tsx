@@ -6,7 +6,8 @@ import Keypad from './Displays/Keypad'
 import styled from 'styled-components/native';
 
 const Body = styled.View`
-  padding: 200px;
+  width: 100%;
+  height: 100%;
 `
 
 export default function App() {

@@ -7,8 +7,8 @@ const Display = styled.Text`
   color: ${(props: {color: string}) => props.color};
 `
 
-const Circ = styled.View`
-  background-color: ${(props: {color: string}) => props.color};
+const Circ = styled.TouchableOpacity`
+  background-color: ${({primary}: {primary: string}) => primary};
   border-radius: 50%;
   height: ${(props: {size: number}) => props.size}px;
   width: ${(props: {size: number}) => props.size}px;
@@ -17,12 +17,6 @@ const Circ = styled.View`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const Highlight = styled.TouchableHighlight`
-  border-radius: 50%;
-  height: ${(props: {size: number}) => props.size}px;
-  width: ${(props: {size: number}) => props.size}px;
 `;
 
 interface CircleInput {
@@ -35,25 +29,15 @@ interface CircleInput {
 
 
 export default function Circle({ primaryColor, secondaryColor, textColor, text, onTouch }: CircleInput) {
+
   return (
-      <Highlight
-      	  activeOpacity={0.3}
-          underlayColor={secondaryColor}
-          onPress = {() => {onTouch()}}  
-          style = {{alignItems: "center"}}
-          size={50}
-          activeOpacity={1}
-      >
-        <Circ color={primaryColor} size={50} >
-            <Display color={textColor}>{text}</Display>
-        </Circ>
-      </Highlight>
+      <Circ 
+        color={primaryColor} 
+        size={75}
+        primary={primaryColor}
+        secondary={secondaryColor}
+        onPress={() => { onTouch(); }} >
+          <Display color={textColor}>{text}</Display>
+      </Circ>
   );
 }
-
-/*
-
-  height: ${(props: {size: number}) => props.size}px;
-  width: ${(props: {size: number}) => props.size}px;
-
- */
