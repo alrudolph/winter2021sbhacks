@@ -6,7 +6,7 @@ import { White, DarkGray, LightGray, Orange } from '../Constants/Palette';
 import Circle from '../Buttons/Circle';
 
 import tokens from "../Constants/tokens";
-import numbers from "../Constants/numbers";
+import digits from "../Constants/numbers";
 
 const Display = styled.View`
     height: 65%;
@@ -25,34 +25,34 @@ const Row = styled.View`
 export default function Keypad({ append, clear, equals}: {append: Function, clear: Function, equals: Function}) {
   return (
     <Display>
-        <Row yes={true}>
+        <Row>
             <Circle color={LightGray} text="AC" onTouch={() => {clear()}} />
             <Circle color={LightGray} text="V" onTouch={() => {append("")}} />
-            <Circle color={LightGray} text="." onTouch={() => {append(".")}} />
+            <Circle color={LightGray} text="." onTouch={() => {append(digits["."])}} />
             <Circle color={Orange} text="÷" onTouch={() => {append(tokens["/"])}} />
         </Row>
         <Row>
-            <Circle color={DarkGray} text="7" onTouch={() => {append("7")}} />
-            <Circle color={DarkGray} text="8" onTouch={() => {append("8")}} />
-            <Circle color={DarkGray} text="9" onTouch={() => {append("9")}} />
+            <Circle color={DarkGray} text="7" onTouch={() => {append(digits[7])}} />
+            <Circle color={DarkGray} text="8" onTouch={() => {append(digits[8])}} />
+            <Circle color={DarkGray} text="9" onTouch={() => {append(digits[9])}} />
             <Circle color={Orange} text="×" onTouch={() => {append(tokens["*"])}} />
         </Row>
         <Row>
-            <Circle color={DarkGray} text="4" onTouch={() => {append("4")}} />
-            <Circle color={DarkGray} text="5" onTouch={() => {append("5")}} />
-            <Circle color={DarkGray} text="6" onTouch={() => {append("6")}} />
+            <Circle color={DarkGray} text="4" onTouch={() => {append(digits[4])}} />
+            <Circle color={DarkGray} text="5" onTouch={() => {append(digits[5])}} />
+            <Circle color={DarkGray} text="6" onTouch={() => {append(digits[6])}} />
             <Circle color={Orange} text="–" onTouch={() => {append(tokens["-"])}} />
         </Row>
         <Row>
-            <Circle color={DarkGray} text="1" onTouch={() => {append("1")}} />
-            <Circle color={DarkGray} text="2" onTouch={() => {append("2")}} />
-            <Circle color={DarkGray} text="3" onTouch={() => {append("3")}} />
+            <Circle color={DarkGray} text="1" onTouch={() => {append(digits[1])}} />
+            <Circle color={DarkGray} text="2" onTouch={() => {append(digits[2])}} />
+            <Circle color={DarkGray} text="3" onTouch={() => {append(digits[3])}} />
             <Circle color={Orange} text="+" onTouch={() => {append(tokens['+']);}} />
         </Row>
         <Row>
-            <Circle color={DarkGray} text="0" onTouch={() => {append("0")}} />
-            <Circle color={DarkGray} text="(" onTouch={() => {append("(")}} />
-            <Circle color={DarkGray} text=")" onTouch={() => {append(")")}} />
+            <Circle color={DarkGray} text="0" onTouch={() => {append(digits[0])}} />
+            <Circle color={DarkGray} text="(" onTouch={() => {append(tokens["("])}} />
+            <Circle color={DarkGray} text=")" onTouch={() => {append(tokens[")"])}} />
             <Circle color={Orange} text="=" onTouch={() => {equals()}} />
         </Row>
     </Display>
