@@ -6,12 +6,16 @@ import styled from 'styled-components/native';
 import Current from './Current';
 import History from './History';
 
-export default function NumberDisplay({ history, val } : {history: string, val:number}) {
+const Display = styled.View`
+    height: 25%;
+    background-color: blue;
+`
 
+export default function NumberDisplay({ history, val } : {history: string, val:number}) {
   return (
-    <View>
+    <Display>
         <History history={history}/>
         <Current value={val}/>
-    </View>
+    </Display>
   );
 }
