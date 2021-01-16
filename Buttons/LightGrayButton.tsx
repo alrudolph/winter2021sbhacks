@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Circle from './Circle';
-import { White, LightGray } from '../GlobalComponents/Palette';
+import { White, LightGray } from '../Constants/Palette';
 
 export default function LightGrayButton({ onTouch, text }: { onTouch: Function, text: string }) {
   return (

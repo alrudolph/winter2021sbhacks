@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import styled from 'styled-components/native';
-import { White } from '../GlobalComponents/Palette';
+import { White } from '../Constants/Palette';
 
 const Display = styled.Text`
     width: 100%;

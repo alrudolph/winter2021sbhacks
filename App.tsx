@@ -7,30 +7,39 @@ import Circle from './Buttons/Circle';
 
 import styled from 'styled-components/native';
 
-import { Black, LightGray } from './GlobalComponents/Palette'
+import { Black, LightGray } from './Constants/Palette'
 import VarPad from './Displays/Variables';
 import { VarView } from './Displays/Variables';
+
+import tokens, {TokenType} from "./Constants/tokens";
 
 const Body = styled.View`
   width: 100%;
   height: 100%;
   background-color: ${Black};
-`
+`;
+
+type stored = {
+  queue: Array<TokenType>,
+  history: string,
+  val: string,
+  mode: string
+}
 
 export default function App() {
+  const defaultState: stored = { queue: [], history: "", val: "", mode: "numpad"};
+  const [{ queue, history, val, mode }, setExpression] = useState(defaultState);
 
-  const [{ history, val, mode}, setExpression] = useState({ history: "1+2+3", val: "5", mode: "numpad" });
-
-  const append = (n: string) => {
-    setExpression({ history: history + n, val: val})
+  const append = (n: TokenType) => {
+    setExpression({ queue: [...queue, n], history: history + n.display, val: val })
   }
 
   const clear = () => {
-    setExpression({ history: "", val: val })
+    setExpression({ queue: [], history: "", val: val })
   }
 
   const equals = () => {
-    setExpression({ history: history, val: eval(history)});
+    setExpression({ queue: queue, history: history, val: eval(history)});
   }
   
   const showVar = () => {

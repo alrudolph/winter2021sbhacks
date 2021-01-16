@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native'
 
-import { White, DarkGray, LightGray, Orange } from '../GlobalComponents/Palette';
+import { White, DarkGray, LightGray, Orange } from '../Constants/Palette';
 import Circle from '../Buttons/Circle';
 
 const VarRow = styled.View`

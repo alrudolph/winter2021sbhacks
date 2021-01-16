@@ -1,31 +1,31 @@
-interface associativityAndPrecedence {
-    token: string,
+export interface TokenType {
+    display: string,
     associativity: "R" | "L",
     precedence: number,
     do: Function
 };
 
-const output: Array<associativityAndPrecedence> = [
-    {
-        token: "+",
+const output =  {
+    "+": {
+        display: "+",
         associativity: "L", 
         precedence: 0,
         do: (a: number, b: number) => { return a + b; }
     },
-    {
-        token: "-",
+    "-": {
+        display: "-",
         associativity: "L", 
         precedence: 0,
         do: (a: number, b: number) => { return a - b; }
     },
-    {
-        token: "*",
+    "*": {
+        display: "*",
         associativity: "L", 
         precedence: 0,
         do: (a: number, b: number) => { return a * b; }
     },
-    {
-        token: "/",
+    "/": {
+        display: "/",
         associativity: "L", 
         precedence: 0,
         do: (a: number, b: number) => { 
@@ -35,12 +35,12 @@ const output: Array<associativityAndPrecedence> = [
             return a / b;
         }
     },
-    {
-        token: "",
+    "": {
+        display: "",
         associativity: "L", 
         precedence: 0,
         do: () => { return ; }
     },
-]
+}
 
 export default output;

@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableHighlight, tyleSheet, Text, View } from 'react-native';
 
 import styled from 'styled-components/native';
-import { White } from '../GlobalComponents/Palette';
+import { White } from '../Constants/Palette';
 
 const Display = styled.Text`
   color: ${(props: {color: string}) => props.color};
@@ -21,7 +21,7 @@ const Circ = styled.TouchableHighlight`
   align-items: center;
 `;
 
-interface CircleInput {
+type CircleInput = {
   color: {primary: string, secondary: string}
   text: string,
   onTouch: Function
