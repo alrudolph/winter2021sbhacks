@@ -23,34 +23,34 @@ export default function Keypad({ append }: {append: Function}) {
   return (
     <Display>
         <Row yes={true}>
-            <CircleButton color={LightGray} text="AC" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={LightGray} text="V" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={LightGray} text="." onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={Orange} text="÷" onTouch={() => {alert("HELLO")}} />
+            <CircleButton color={LightGray} text="AC" onTouch={() => {append("")}} />
+            <CircleButton color={LightGray} text="V" onTouch={() => {append("")}} />
+            <CircleButton color={LightGray} text="." onTouch={() => {append(".")}} />
+            <CircleButton color={Orange} text="÷" onTouch={() => {append("÷")}} />
         </Row>
         <Row>
-            <CircleButton color={DarkGray} text="7" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={DarkGray} text="8" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={DarkGray} text="9" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={Orange} text="×" onTouch={() => {alert("HELLO")}} />
+            <CircleButton color={DarkGray} text="7" onTouch={() => {append("7")}} />
+            <CircleButton color={DarkGray} text="8" onTouch={() => {append("8")}} />
+            <CircleButton color={DarkGray} text="9" onTouch={() => {append("9")}} />
+            <CircleButton color={Orange} text="×" onTouch={() => {append("×")}} />
         </Row>
         <Row>
-            <CircleButton color={DarkGray} text="4" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={DarkGray} text="5" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={DarkGray} text="6" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={Orange} text="–" onTouch={() => {alert("HELLO")}} />
+            <CircleButton color={DarkGray} text="4" onTouch={() => {append("4")}} />
+            <CircleButton color={DarkGray} text="5" onTouch={() => {append("5")}} />
+            <CircleButton color={DarkGray} text="6" onTouch={() => {append("6")}} />
+            <CircleButton color={Orange} text="–" onTouch={() => {append("–")}} />
         </Row>
         <Row>
-            <CircleButton color={DarkGray} text="1" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={DarkGray} text="2" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={DarkGray} text="3" onTouch={() => {alert("HELLO")}} />
+            <CircleButton color={DarkGray} text="1" onTouch={() => {append("1")}} />
+            <CircleButton color={DarkGray} text="2" onTouch={() => {append("2")}} />
+            <CircleButton color={DarkGray} text="3" onTouch={() => {append("3")}} />
             <CircleButton color={Orange} text="+" onTouch={() => {append('+');}} />
         </Row>
         <Row>
-            <CircleButton color={DarkGray} text="0" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={DarkGray} text="(" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={DarkGray} text=")" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={Orange} text="=" onTouch={() => {alert("HELLO")}} />
+            <CircleButton color={DarkGray} text="0" onTouch={() => {append("0")}} />
+            <CircleButton color={DarkGray} text="(" onTouch={() => {append("(")}} />
+            <CircleButton color={DarkGray} text=")" onTouch={() => {append(")")}} />
+            <CircleButton color={Orange} text="=" onTouch={() => {append("")}} />
         </Row>
     </Display>
   );
