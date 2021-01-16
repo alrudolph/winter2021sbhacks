@@ -73,10 +73,14 @@ export default function App() {
     setMode("var");
   }
 
+  const back = () => {
+    setMode("num");
+  }
+
   return (
     <Body>
       <NumberDisplay history={history} val={val}/>
-      {mode === "numPad" ? 
+      {mode === "num" ? 
       (<Keypad 
            append={(input: Types) => { append(input); }}
            clear={() => { clear(); }}
@@ -84,7 +88,9 @@ export default function App() {
 	          showVar={() => { showVar(); }}
         />
       ) : (
-        <VarPad append={(input: Types) => { append(input); }} />
+        <VarPad append={(input: Types) => { append(input); }}
+		back={() => { back(); }}
+	/>
       )}
     </Body>
   );
