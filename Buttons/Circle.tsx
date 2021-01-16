@@ -38,6 +38,7 @@ interface CircleInput {
 export default function Circle({ primaryColor, secondaryColor, textColor, text, onTouch }: CircleInput) {
   return (
       <Highlight
+      	  activeOpacity={0.3}
           underlayColor={secondaryColor}
           onPress = {() => {onTouch()}}  
           style = {{alignItems: "center"}}
