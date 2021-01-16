@@ -41,37 +41,50 @@ const Display = styled.View`
     display: flex;
     flex: 1;
     height: 60%;
-    justify-content: space-evenly;
 `
 
-export function VarView({varName, append}: {varName: string, append: Function}){
-	const [varVal, setVarVal] = useState("1247348");
+export function VarView({varName, append, mode, current}: {varName: string, append: Function, mode:string, current:number}){
+	const [varVal, setVarVal] = useState(0);
+
 	return (
 		<Display>
 			<VarRow>
 				<VarDisplay>{varVal}</VarDisplay>
 				<ButtonPartLmao>
-					<Circle color={LightGray} text={varName} onTouch={() => {append(varName);}}/>
+					<Circle color={LightGray} text={varName} onTouch={() => {
+						if (mode === "store") {
+							setVarVal(current);
+						}
+						else if (mode === "retrieve") {
+							append(varVal);
+						}
+					}}/>
 				</ButtonPartLmao>
 			</VarRow>
 			<Divider />
 		</Display>
 );}
 
-export default function VarPad({append, back}: {append: Function, back: Function}){
-	return (<Display>
-    	   <VarView varName="A" append={(input: string) => { append(input); }} />
-    	   <VarView varName="B" append={(input: string) => { append(input); }} />
-    	   <VarView varName="C" append={(input: string) => { append(input); }} />
-    	   <VarView varName="D" append={(input: string) => { append(input); }} />
-    	   <VarView varName="E" append={(input: string) => { append(input); }} />
-    	   <VarView varName="F" append={(input: string) => { append(input); }} />
-	   <VarRow>
-		<View style={{flex: .75}} />
+export default function VarPad({append, back, current}: {append: Function, back: Function, current: number}){
+	const [mode, setMode] = useState("store");
+
+	return (
+		<Display>
+    	   <VarView varName="A" append={(input: string) => { append(input); }} current={current} mode={mode}/>
+    	   <VarView varName="B" append={(input: string) => { append(input); }} current={current} mode={mode}/>
+    	   <VarView varName="C" append={(input: string) => { append(input); }} current={current} mode={mode}/>
+    	   <VarView varName="D" append={(input: string) => { append(input); }} current={current} mode={mode}/>
+    	   <VarView varName="E" append={(input: string) => { append(input); }} current={current} mode={mode}/>
+	   {
+    	   //<VarView varName="F" append={(input: string) => { append(input); }} current={current} mode={mode}/>
+	   }
+	   <VarRow style={{flex: 1}}>
+		<View style={{width: "75%"}} />
 		<ButtonPartLmao>
 			<Circle color={Orange} text="←" onTouch={() => {back();}}/>
 		</ButtonPartLmao>
 	  </VarRow>
-		
-    	</Display>
-);}
+	  */}
+		</Display>
+	)
+;}
