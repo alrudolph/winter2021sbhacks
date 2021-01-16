@@ -8,7 +8,7 @@ import { Orange, White } from './GlobalComponents/Palette'
 export default function App() {
   return (
     <View>
-      <Circle primaryColor={Orange.primary} secondaryColor={Orange.secondary} textColor={White} callback={() => alert("hello")} text="+"/>
+      <Circle primaryColor={Orange.primary} secondaryColor={Orange.secondary} textColor={White} callback={() => alert("hello")} text="+" size = {25} />
     </View>
   );
 }

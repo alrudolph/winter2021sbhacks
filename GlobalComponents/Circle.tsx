@@ -9,6 +9,9 @@ const Display = styled.Text`
 
 const Circ = styled.View`
   background-color: ${(props: {color: string}) => props.color};
+  border-radius: 50%;
+  height: ${(props: {size: number}) => props.size}px;
+  width: ${(props: {size: number}) => props.size}px;
 `;
 
 type CircleInput = {
@@ -16,12 +19,13 @@ type CircleInput = {
   secondaryColor: string,
   textColor: string,
   text: string,
-  callback: Function
+  callback: Function,
+  size: number
 };
 
-export default function Circle({ primaryColor, secondaryColor, textColor, text, callback }: CircleInput) {
+export default function Circle({ primaryColor, secondaryColor, textColor, text, callback, size }: CircleInput) {
   return (
-    <Circ color={primaryColor}>
+    <Circ color={primaryColor} size={size}>
       <TouchableHighlight
           underlayColor={secondaryColor}
           onPress = {() => {callback()}}  
@@ -31,3 +35,10 @@ export default function Circle({ primaryColor, secondaryColor, textColor, text, 
     </Circ>
   );
 }
+
+/*
+
+  height: ${(props: {size: number}) => props.size}px;
+  width: ${(props: {size: number}) => props.size}px;
+
+ */
