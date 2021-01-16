@@ -3,10 +3,13 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Keypad from './Displays/Keypad';
 import NumberDisplay from './Displays/NumberDisplay';
+import Circle from './Buttons/Circle';
 
 import styled from 'styled-components/native';
 
-import { Black } from './GlobalComponents/Palette'
+import { Black, LightGray } from './GlobalComponents/Palette'
+import VarPad from './Displays/Variables';
+import { VarView } from './Displays/Variables';
 
 const Body = styled.View`
   width: 100%;
@@ -16,7 +19,7 @@ const Body = styled.View`
 
 export default function App() {
 
-  const [{ history, val }, setExpression] = useState({ history: "1+2+3", val: "5" });
+  const [{ history, val, mode}, setExpression] = useState({ history: "1+2+3", val: "5", mode: "numpad" });
 
   const append = (n: string) => {
     setExpression({ history: history + n, val: val})
@@ -29,15 +32,27 @@ export default function App() {
   const equals = () => {
     setExpression({ history: history, val: eval(history)});
   }
+  
+  const showVar = () => {
+    setExpression({mode: "var"});
+  }
+
+  let inputPad;
+  if(mode === "numpad"){
+  	inputPad = (<Keypad 
+           append={(input: string) => { append(input); }}
+           clear={() => { clear(); }}
+           equals={() => { equals(); }}
+	   showVar={() => { showVar(); }}
+        />);
+  } else if (mode === "var"){
+  	inputPad = (<VarPad append={(input: string) => { append(input); }} />);
+  }
 
   return (
     <Body>
       <NumberDisplay history={history} val={val}/>
-      <Keypad 
-        append={(input: string) => { append(input); }}
-        clear={() => { clear(); }}
-        equals={() => { equals(); }}
-        />
+      {inputPad}
     </Body>
   );
 }

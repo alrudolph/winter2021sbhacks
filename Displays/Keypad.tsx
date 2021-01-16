@@ -15,16 +15,16 @@ const Row = styled.View`
     flex-grow: 1;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 `;
 
-export default function Keypad({ append, clear, equals}: {append: Function, clear: Function, equals: Function}) {
+export default function Keypad({ append, clear, equals, showVar }: {append: Function, clear: Function, equals: Function, showVar: Function}) {
   return (
     <Display>
         <Row yes={true}>
-            <Circle color={LightGray} text="AC" onTouch={() => {clear()}} />
-            <Circle color={LightGray} text="V" onTouch={() => {append("")}} />
+            <Circle color={LightGray} text="AC" onTouch={() => {clear()}}  />
+            <Circle color={LightGray} text="V" onTouch={() => {showVar()}} />
             <Circle color={LightGray} text="." onTouch={() => {append(".")}} />
             <Circle color={Orange} text="÷" onTouch={() => {append("÷")}} />
         </Row>
