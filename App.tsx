@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 
 import Keypad from './Displays/Keypad';
 import NumberDisplay from './Displays/NumberDisplay';
@@ -7,7 +7,7 @@ import Circle from './Buttons/Circle';
 
 import styled from 'styled-components/native';
 
-import { Black, LightGray } from './Constants/Palette'
+import { White, Black, LightGray } from './Constants/Palette'
 import VarPad from './Displays/VarPad';
 import { VarView } from './Displays/VarPad';
 
@@ -15,6 +15,9 @@ import { Types, TokenType, DigitType } from "./Constants/types"
 import { DigitBuilder, trunc } from "./Constants/numbers"
 import output from './Constants/tokens';
 import { Variables } from './Constants/Variables';
+
+import Current from './Displays/Current';
+import History from './Displays/History';
 
 const Body = styled.View`
   width: 100%;
@@ -27,11 +30,67 @@ type stored = {
   val: string
 }
 
+
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'First Item',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: 'Second Item',
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+  },
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'},
+  {title: 'beans'}
+];
+
+
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    height: "25%"
+  },
+  item: {
+    backgroundColor: Black,
+    padding: 0,
+    marginVertical: 8,
+    marginHorizontal: 0,
+  },
+  title: {
+    fontSize: 32,
+    color: White
+  },
+});
+
 export default function App() {
   const [mode, setMode] = useState("num");
 
   const defaultState: stored = { queue: [], history: "", val: ""};
   const [{ queue, history, val }, setExpression] = useState(defaultState);
+
+  const [prev, setPrev] = useState([]);
 
   useEffect(() => {
     const output = queue.reduce((acc, curr) => acc + curr.display, "");
@@ -77,6 +136,10 @@ export default function App() {
   }
 
   const equals = () => {
+    let updatedPrev = [...prev];
+    updatedPrev.push({title: history});
+    setPrev(updatedPrev);
+
     setExpression({ queue: queue, history: history, val: trunc(evaluateQueue())});
   }
   
@@ -88,10 +151,23 @@ export default function App() {
     setMode("num");
   }
 
+const renderItem = ({ item }) => (
+    <Item title={item.title} />
+  );
+
   return (
     <Body>
+      <View style={{height: "50px"}}>
+      <ScrollView>
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+      />
+      </ScrollView>
+      </View>
       <Variables>
-        <NumberDisplay history={history} val={val}/>
+	<History history={history} />
+	<Current value={val} />
         {mode === "num" ? 
         (<Keypad 
             append={(input: Types) => { append(input); }}
