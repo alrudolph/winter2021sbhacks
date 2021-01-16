@@ -38,7 +38,7 @@ export default function Keypad() {
             <CircleButton color={DarkGray} text="4" onTouch={() => {alert("HELLO")}} />
             <CircleButton color={DarkGray} text="5" onTouch={() => {alert("HELLO")}} />
             <CircleButton color={DarkGray} text="6" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={Orange} text="-" onTouch={() => {alert("HELLO")}} />
+            <CircleButton color={Orange} text="–" onTouch={() => {alert("HELLO")}} />
         </Row>
         <Row>
             <CircleButton color={DarkGray} text="1" onTouch={() => {alert("HELLO")}} />
