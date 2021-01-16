@@ -1,8 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, tyleSheet, Text, View } from 'react-native';
 
-export default function Circle() {
+import styled from 'styled-components';
+
+const T1 = styled(Button)`
+  background-color: blue;
+`;
+
+type CircleInput = {
+  primaryColor: string,
+  secondaryColor: string
+};
+
+export default function Circle({ primaryColor }: CircleInput) {
   return (
-    <Text>Test</Text>
+    <T1 title="Hello" onPress={() => {alert(primaryColor)}}/>
   );
 }

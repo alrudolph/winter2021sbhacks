@@ -6,7 +6,7 @@ import Circle from './GlobalComponents/Circle';
 export default function App() {
   return (
     <View>
-      <Circle />
+      <Circle primaryColor="red"/>
     </View>
   );
 }
