@@ -11,7 +11,7 @@ const Circ = styled.View`
   background-color: ${(props: {color: string}) => props.color};
 `;
 
-type CircleInput = {
+interface CircleInput {
   primaryColor: string,
   secondaryColor: string,
   textColor: string,
