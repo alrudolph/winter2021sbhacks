@@ -19,7 +19,7 @@ const Row = styled.View`
     align-items: center;
 `;
 
-export default function Keypad() {
+export default function Keypad({ append }: {append: Function}) {
   return (
     <Display>
         <Row yes={true}>
@@ -44,7 +44,7 @@ export default function Keypad() {
             <CircleButton color={DarkGray} text="1" onTouch={() => {alert("HELLO")}} />
             <CircleButton color={DarkGray} text="2" onTouch={() => {alert("HELLO")}} />
             <CircleButton color={DarkGray} text="3" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={Orange} text="+" onTouch={() => {alert("HELLO")}} />
+            <CircleButton color={Orange} text="+" onTouch={() => {append('+');}} />
         </Row>
         <Row>
             <CircleButton color={DarkGray} text="0" onTouch={() => {alert("HELLO")}} />

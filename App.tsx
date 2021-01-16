@@ -16,7 +16,7 @@ const Body = styled.View`
 
 export default function App() {
 
-  const [{ history, val }, setExpression] = useState({ history: "", val: "" });
+  const [{ history, val }, setExpression] = useState({ history: "1+2+3", val: "5" });
 
 
   return (
