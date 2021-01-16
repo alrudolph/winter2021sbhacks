@@ -26,19 +26,19 @@ export default function Keypad() {
             <CircleButton color={LightGray} text="AC" onTouch={() => {alert("HELLO")}} />
             <CircleButton color={LightGray} text="V" onTouch={() => {alert("HELLO")}} />
             <CircleButton color={LightGray} text="." onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={Orange} text="*/*" onTouch={() => {alert("HELLO")}} />
+            <CircleButton color={Orange} text="÷" onTouch={() => {alert("HELLO")}} />
         </Row>
         <Row>
             <CircleButton color={DarkGray} text="7" onTouch={() => {alert("HELLO")}} />
             <CircleButton color={DarkGray} text="8" onTouch={() => {alert("HELLO")}} />
             <CircleButton color={DarkGray} text="9" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={Orange} text="X" onTouch={() => {alert("HELLO")}} />
+            <CircleButton color={Orange} text="×" onTouch={() => {alert("HELLO")}} />
         </Row>
         <Row>
             <CircleButton color={DarkGray} text="4" onTouch={() => {alert("HELLO")}} />
             <CircleButton color={DarkGray} text="5" onTouch={() => {alert("HELLO")}} />
             <CircleButton color={DarkGray} text="6" onTouch={() => {alert("HELLO")}} />
-            <CircleButton color={Orange} text="-" onTouch={() => {alert("HELLO")}} />
+            <CircleButton color={Orange} text="–" onTouch={() => {alert("HELLO")}} />
         </Row>
         <Row>
             <CircleButton color={DarkGray} text="1" onTouch={() => {alert("HELLO")}} />
