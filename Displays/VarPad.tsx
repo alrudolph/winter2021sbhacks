@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { White, DarkGray, LightGray, Orange } from '../Constants/Palette';
 import Circle from '../Buttons/Circle';
+import LongBoi from '../Buttons/LongBoi';
 
 import { VariablesContext } from "../Constants/Variables"
 
@@ -32,7 +33,7 @@ const ButtonPartLmao = styled.View`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: center;
 	width: 25%;
 `;
 
@@ -46,9 +47,11 @@ const Display = styled.View`
     display: flex;
     flex: 1;
     height: 60%;
-`
+`;
 
-export function VarView({varName, store, retreive, mode, display}: {varName: string, store: Function, retreive: Function, mode:string, display: string}){
+
+
+export function VarView({varName, store, retreive, mode, display, setMode}: {varName: string, store: Function, retreive: Function, mode:string, display: string, setMode:Function}){
 	const [varVal, setVarVal] = useState(display);
 
 	return (
@@ -63,6 +66,7 @@ export function VarView({varName, store, retreive, mode, display}: {varName: str
 						else if (mode === "retreive") {
 							retreive();
 						}
+						setMode("retreive");
 					}}/>
 				</ButtonPartLmao>
 			</VarRow>
@@ -71,7 +75,7 @@ export function VarView({varName, store, retreive, mode, display}: {varName: str
 );}
 
 export default function VarPad({append, back, currVal, currDisplay}: {append: Function, back: Function, currVal: number, currDisplay: string}){
-	const [mode, setMode] = useState("store");
+	const [mode, setMode] = useState("retreive");
 	const [vars, change] = useContext(VariablesContext)
 
 	return (
@@ -87,6 +91,7 @@ export default function VarPad({append, back, currVal, currDisplay}: {append: Fu
 							retreive={() => append({ type: "variable", which: value, value: currVal, display: value })}
 							mode={mode}
 							key={idx}
+							setMode={setMode}
 							store={() => {
 								change(value, {type: "number", value: currVal, display: currDisplay})
 								return currDisplay;
@@ -95,7 +100,16 @@ export default function VarPad({append, back, currVal, currDisplay}: {append: Fu
 					)
 				})
 			}
-	   		<Circle color={Orange} text="←" onTouch={() => { back(); }} />
+			<VarRow style={{flex: 1}}>
+				<View style={{width: "50%"}} />
+				<ButtonPartLmao style={{justifyContent: "flex-end"}}>
+					<LongBoi color={Orange} text="save" onTouch={() => { setMode("store") }}
+						style={{alignSelf: "flex-end"}}/>
+				</ButtonPartLmao>
+				<ButtonPartLmao>
+					<Circle color={Orange} text="←" onTouch={() => {back();}}/>
+				</ButtonPartLmao>
+	  		</VarRow>	
 		</Display>
 	)
 ;}

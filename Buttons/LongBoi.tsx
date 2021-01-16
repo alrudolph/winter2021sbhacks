@@ -11,10 +11,10 @@ const Display = styled.Text`
 
 const Circ = styled.TouchableHighlight`
   background-color: ${({color}: {color: string}) => color};
-  border-radius: 50px;
+  border-radius: 30px;
 
   height: 75px;
-  width: 75px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@ type CircleInput = {
   onTouch: Function
 };
 
-export default function Circle({ color, text, onTouch }: CircleInput) {
+export default function LongBoi({ color, text, onTouch }: CircleInput) {
   return (
       <Circ 
         onPress={() => { onTouch(); }} 
