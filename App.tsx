@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import Keypad from './Displays/Keypad'
+import Keypad from './Displays/Keypad';
+import NumberDisplay from './Displays/NumberDisplay';
 
 import styled from 'styled-components/native';
 
@@ -14,8 +15,13 @@ const Body = styled.View`
 `
 
 export default function App() {
+
+  let history = "1+2+3";
+  let val = eval(history);
+  
   return (
     <Body>
+      <NumberDisplay history={history} val={val}/>
       <Keypad />
     </Body>
   );

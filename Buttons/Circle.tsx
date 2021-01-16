@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableHighlight, tyleSheet, Text, View } from 'react-native';
 
 import styled from 'styled-components/native';
+import { White } from '../GlobalComponents/Palette';
 
 const Display = styled.Text`
   color: ${(props: {color: string}) => props.color};
@@ -38,3 +39,15 @@ export default function Circle({ color, textColor, text, onTouch }: CircleInput)
       </Circ>
   );
 }
+
+export function CircleButton({ color, onTouch, text}: {color: {primary: string, secondary: string}, onTouch: Function, text: string}){
+	return (
+		<Circle
+			color={color}
+			textColor={White}
+			onTouch={onTouch}
+			text={text}
+		/>
+	);
+}
+
