@@ -14,7 +14,7 @@ const Circ = styled.TouchableHighlight`
   border-radius: 50px;
 
   height: 75px;
-  width: 75px;
+  width: 75px;;
   display: flex;
   flex-direction: column;
   justify-content: center;
