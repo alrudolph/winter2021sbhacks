@@ -22,7 +22,7 @@ export default function App() {
   return (
     <Body>
       <NumberDisplay history={history} val={val}/>
-      <Keypad />
+      <Keypad append={(input: string) => {append(input);}}/>
     </Body>
   );
 }
