@@ -23,31 +23,20 @@ const Circ = styled.TouchableHighlight`
 
 interface CircleInput {
   color: {primary: string, secondary: string}
-  textColor: string,
   text: string,
   onTouch: Function
 };
 
-export default function Circle({ color, textColor, text, onTouch }: CircleInput) {
+export default function Circle({ color, text, onTouch }: CircleInput) {
   return (
       <Circ 
         onPress={() => { onTouch(); }} 
         color={color.primary} 
         underlayColor={color.secondary}
         activeOpacity={1}>
-          <Display color={textColor}>{text}</Display>
+          <Display color={White}>{text}</Display>
       </Circ>
   );
 }
 
-export function CircleButton({ color, onTouch, text}: {color: {primary: string, secondary: string}, onTouch: Function, text: string}){
-	return (
-		<Circle
-			color={color}
-			textColor={White}
-			onTouch={onTouch}
-			text={text}
-		/>
-	);
-}
 
