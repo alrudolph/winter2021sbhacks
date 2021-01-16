@@ -24,7 +24,7 @@ export default function Circle({ primaryColor, secondaryColor, textColor, text, 
     <Circ color={primaryColor}>
       <TouchableHighlight
           underlayColor={secondaryColor}
-          onPress = {() => {onTouch()}}  
+          onPress = {() => { onTouch() }}  
       >
         <Display color={textColor}>{text}</Display>
       </TouchableHighlight>
