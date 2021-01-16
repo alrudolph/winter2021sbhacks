@@ -35,6 +35,8 @@ export default function App() {
   useEffect(() => {
     const output = queue.reduce((acc, curr) => acc + curr.display, "");
     setExpression({ queue: queue, history: output, val: val});
+
+    console.log(queue);
   }, [queue])
 
   const appendQueue = (n: Types) => {
@@ -66,7 +68,7 @@ export default function App() {
   }
 
   const equals = () => {
-    setExpression({ queue: queue, history: history, val: Math.round(eval(history) * 1000) / 1000});
+    setExpression({ queue: queue, history: history, val: history ? Math.round(eval(history) * 1000) / 1000: ""});
   }
   
   const showVar = () => {
