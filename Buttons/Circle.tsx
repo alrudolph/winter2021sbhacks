@@ -20,7 +20,6 @@ const Circ = styled.View`
 `;
 
 const Highlight = styled.TouchableHighlight`
-  background-color: ${(props: {color: string}) => props.color};
   border-radius: 50%;
   height: ${(props: {size: number}) => props.size}px;
   width: ${(props: {size: number}) => props.size}px;
@@ -42,6 +41,7 @@ export default function Circle({ primaryColor, secondaryColor, textColor, text, 
           onPress = {() => {onTouch()}}  
           style = {{alignItems: "center"}}
           size={50}
+          activeOpacity={1}
       >
         <Circ color={primaryColor} size={50} >
             <Display color={textColor}>{text}</Display>
