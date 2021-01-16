@@ -6,7 +6,9 @@ import NumberDisplay from './Displays/NumberDisplay';
 
 import styled from 'styled-components/native';
 
-import { Black } from './GlobalComponents/Palette'
+import { Black } from './Constants/Palette'
+
+import tokens, {TokenType} from "./Constants/tokens";
 
 const Body = styled.View`
   width: 100%;
@@ -14,27 +16,33 @@ const Body = styled.View`
   background-color: ${Black};
 `
 
+type stored = {
+  queue: Array<TokenType>,
+  history: string,
+  val: string
+}
+
 export default function App() {
+  const defaultState: stored = { queue: [], history: "", val: ""};
+  const [{ queue, history, val }, setExpression] = useState(defaultState);
 
-  const [{ history, val }, setExpression] = useState({ history: "1+2+3", val: "5" });
-
-  const append = (n: string) => {
-    setExpression({ history: history + n, val: val})
+  const append = (n: TokenType) => {
+    setExpression({ queue: [...queue, n], history: history + n.display, val: val })
   }
 
   const clear = () => {
-    setExpression({ history: "", val: val })
+    setExpression({ queue: [], history: "", val: val })
   }
 
   const equals = () => {
-    setExpression({ history: history, val: eval(history)});
+    setExpression({ queue: queue, history: history, val: eval(history)});
   }
 
   return (
     <Body>
       <NumberDisplay history={history} val={val}/>
       <Keypad 
-        append={(input: string) => { append(input); }}
+        append={(input: TokenType) => { append(input); }}
         clear={() => { clear(); }}
         equals={() => { equals(); }}
         />
