@@ -23,7 +23,7 @@ const Display = styled.Text`
 
 const Circ = styled.TouchableHighlight`
   background-color: ${({color}: {color: string}) => color};
-  border-radius: 50%;
+  border-radius: 50px;
 
   display: flex;
   flex-direction: column;
