@@ -15,6 +15,7 @@ export default function PrevList({prev}) {
     return (
     <View style={{height: "25%"}}>
         <ScrollView ref={scrollViewRef}
+	showsVerticalScrollIndicator={false}
         onContentSizeChange={()=> scrollViewRef.current.scrollToEnd({animated: true})}>
         <FlatList
             data={prev}
