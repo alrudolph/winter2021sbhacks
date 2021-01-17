@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ScrollView, SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 
 import Keypad from './Displays/Keypad';
@@ -154,13 +154,16 @@ export default function App() {
 const renderItem = ({ item }) => (
     <Item title={item.title} />
   );
+ 
+const scrollViewRef = useRef();
 
   return (
     <Body>
       <View style={{height: "50px"}}>
-      <ScrollView>
+      <ScrollView ref={scrollViewRef}
+      onContentSizeChange={()=> scrollViewRef.current.scrollToEnd({animated: true})}>
       <FlatList
-        data={DATA}
+        data={prev}
         renderItem={renderItem}
       />
       </ScrollView>
