@@ -18,10 +18,8 @@ import { Variables } from './Constants/Variables';
 
 import calculator, {addParenthesis} from "./Constants/calculator";
 
-/*
-	 import Current from './Displays/Current';
-	 import History from './Displays/History';
- */
+import Current from './Displays/Current';
+import History from './Displays/History';
 
 import { Item } from './Displays/Item';
 
