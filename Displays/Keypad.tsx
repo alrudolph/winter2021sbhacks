@@ -36,7 +36,8 @@ export default function Keypad({ append, clear, equals, showVar }: {append: Func
   return (
     <Display>
         <Row>
-			<ScrollView horizontal={true} style={{height: cbdim + 1}}>
+			<ScrollView horizontal={true} style={{height: cbdim + 1}}
+			showsHorizontalScrollIndicator={false}>
 			{Spacer()}
             <Circle color={LightGray} text="AC" onTouch={() => {clear()}} />
 			{Spacer()}
@@ -47,8 +48,6 @@ export default function Keypad({ append, clear, equals, showVar }: {append: Func
             <Circle color={Orange} text="÷" onTouch={() => {append(tokens["/"])}} />
 			{Spacer()}
             <Circle color={Orange} text="^" onTouch={() => {append(tokens["^"])}} />
-			{Spacer()}
-            <Circle color={Orange} text="." onTouch={() => {append(digits["."])}} />
 			</ScrollView>
         </Row>
         <Row>
