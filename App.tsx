@@ -18,10 +18,8 @@ import { Variables } from './Constants/Variables';
 
 import calculator, {addParenthesis} from "./Constants/calculator";
 
-/*
-	 import Current from './Displays/Current';
-	 import History from './Displays/History';
- */
+import Current from './Displays/Current';
+import History from './Displays/History';
 
 import { Item } from './Displays/PrevList';
 
@@ -126,8 +124,12 @@ const scrollViewRef = useRef();
       </ScrollView>
       </View>
       <Variables>
-      	<View style={{height: "30%"}}>
+      	<View style={{height: "30%", display: "flex"}}>
+	<History history={history} />
+	<Current value={val} />
+	{/*
 	<NumberDisplay history={history} val={val} />
+	*/}
 	</View>
         {mode === "num" ? 
         (<Keypad 

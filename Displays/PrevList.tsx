@@ -13,8 +13,8 @@ export const Item = ({ input, output}) => (
 
 export const prevStyles = StyleSheet.create({
   item: {
-    backgroundColor: Black,
-    //backgroundColor: "#40b1ed",
+   // backgroundColor: Black,
+    backgroundColor: "#40b1ed",
     paddingTop: 5,
     paddingLeft: "5%",
     paddingRight: "5%",
