@@ -115,8 +115,7 @@ const scrollViewRef = useRef();
     <Body>
       <View style={{height: "10%"}}>
       <ScrollView ref={scrollViewRef}
-      onContentSizeChange={()=> scrollViewRef.current.scrollToEnd({animated: true})}
-      style={{backgroundColor: 'red'}}>
+      onContentSizeChange={()=> scrollViewRef.current.scrollToEnd({animated: true})}>
       <FlatList
         data={prev}
         renderItem={renderItem}

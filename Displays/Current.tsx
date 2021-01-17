@@ -12,7 +12,6 @@ const Display = styled.Text`
     
     display: flex;
     justify-content: flex-end;
-    background-color: blue;
     align-items: flex-end;
 `;
 
