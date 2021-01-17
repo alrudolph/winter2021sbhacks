@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native'
 
 
@@ -10,6 +10,7 @@ import LongBoi from '../Buttons/LongBoi';
 import { VariablesContext } from "../Constants/Variables"
 
 import { trunc } from '../Constants/numbers';
+import { cbdim } from '../Buttons/Circle';
 
 const VarRow = styled.View`
 	flex-grow: 1;
@@ -100,7 +101,7 @@ export default function VarPad({append, back, currVal, currDisplay}: {append: Fu
 				})
 			}
 			<VarRow style={{flex: 1}}>
-				<View style={{width: "50%"}} />
+				<View style={{width: "30%"}} />
 				<ButtonPartLmao style={{justifyContent: "flex-end"}}>
 					<LongBoi color={Orange} text="Save" onTouch={() => { mode === "store" ? setMode("retreive") : setMode("store") }}
 						style={{alignSelf: "flex-end"}}/>

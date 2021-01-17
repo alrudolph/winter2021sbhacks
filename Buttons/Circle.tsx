@@ -9,6 +9,7 @@ const windowHeight = Dimensions.get('window').height;
 const cbw = Math.round(windowWidth * .20);
 const cbh = Math.round(windowHeight * .10);
 export const cbdim = Math.min(cbw, cbh);
+export const dist = Math.round((0.95* windowWidth - 4 * cbdim) * 0.20);
 
 const Display = styled.Text`
   color: ${(props: {color: string}) => props.color};

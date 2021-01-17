@@ -39,6 +39,7 @@ const Main = styled.View`
   width: ${windowWidth > windowHeight ? 45 : 100}%;
   height: 100%;
 `
+export const paddingPx = windowWidth * 0.025
 
 type stored = {
 queue: Array<Types>,

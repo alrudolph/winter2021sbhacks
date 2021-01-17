@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native'
 
 import { White, DarkGray, LightGray, Orange } from '../Constants/Palette';
@@ -8,17 +8,27 @@ import Circle from '../Buttons/Circle';
 import tokens from "../Constants/tokens";
 import digits from "../Constants/numbers";
 
+import { cbdim, dist } from "../Buttons/Circle";
+import { paddingPx } from "../App";
+
 const Display = styled.View`
     height: 70%;
     display: flex;
     justify-content: space-evenly;
-`
+`;
+
+function Spacer(){
+	return (
+		<View style={{width: (dist + 1)}}>
+		</View>
+	);
+}
 
 const Row = styled.View`
     flex-grow: 1;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 `;
 
@@ -26,10 +36,20 @@ export default function Keypad({ append, clear, equals, showVar }: {append: Func
   return (
     <Display>
         <Row>
+			<ScrollView horizontal={true}>
+			{Spacer()}
             <Circle color={LightGray} text="AC" onTouch={() => {clear()}} />
+			{Spacer()}
             <Circle color={LightGray} text="V" onTouch={() => {showVar()}} />
+			{Spacer()}
             <Circle color={LightGray} text="." onTouch={() => {append(digits["."])}} />
+			{Spacer()}
             <Circle color={Orange} text="÷" onTouch={() => {append(tokens["/"])}} />
+			{Spacer()}
+            <Circle color={Orange} text="." onTouch={() => {append(digits["."])}} />
+			{Spacer()}
+            <Circle color={Orange} text="." onTouch={() => {append(digits["."])}} />
+			</ScrollView>
         </Row>
         <Row>
             <Circle color={DarkGray} text="7" onTouch={() => {append(digits[7])}} />
