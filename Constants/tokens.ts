@@ -55,6 +55,13 @@ const output: { [key: string]: TokenType } =  {
         precedence: 0,
         do: () => { return ; }
     },
+    "^": {
+    	display: "^",
+	nargs: 2,
+	type: "operator",
+	precedence: 5,
+	do: (a: number, b: number) => { return Math.pow(a, b); }
+   },
 }
 
 export default output;
