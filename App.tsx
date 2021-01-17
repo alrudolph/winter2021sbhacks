@@ -130,8 +130,11 @@ const scrollViewRef = useRef();
       </View>
       <Variables>
       	<View style={{height: "30%"}}>
+	<NumberDisplay history={history} val={val} />
+	{/*
 	<History history={history} />
 	<Current value={val} />
+	*/}
 	</View>
         {mode === "num" ? 
         (<Keypad 
@@ -162,6 +165,8 @@ const styles = StyleSheet.create({
     backgroundColor: Black,
     //backgroundColor: "#40b1ed",
     paddingTop: 5,
+    paddingLeft: "5%",
+    paddingRight: "5%",
     marginVertical: 5,
     marginHorizontal: 0,
     display: "flex",
