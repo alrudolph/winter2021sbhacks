@@ -7,7 +7,7 @@ import Current from './Current';
 import History from './History';
 
 const Display = styled.View`
-  height: 35%;
+  height: 30%;
   padding: 0 5%;
 `
 

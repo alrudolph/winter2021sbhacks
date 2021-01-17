@@ -33,9 +33,11 @@ type stored = {
 }
 
 
-const Item = ({ title }) => (
+const Item = ({ input, output}) => (
   <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
+    <Text style={styles.input}>{input}</Text>
+    <View style={{flex: 1}}></View>
+    <Text style={styles.output}>{output}</Text>
   </View>
 );
 
@@ -97,7 +99,7 @@ export default function App() {
     setExpression({ queue: addParenthesis([...queue]), history, val: trunc(evaluateQueue())});
 
     let updatedPrev = [...prev];
-    updatedPrev.push({title: history});
+    updatedPrev.push({input: history, output: trunc(evaluateQueue())});
     setPrev(updatedPrev);
   }
   
@@ -109,15 +111,15 @@ export default function App() {
     setMode("num");
   }
 
-const renderItem = ({ item }) => (
-    <Item title={item.title} />
+const renderItem = ({ item, output}) => (
+    <Item input={item.input} output={item.output}/>
   );
  
 const scrollViewRef = useRef();
 
   return (
     <Body>
-      <View style={{height: "10%"}}>
+      <View style={{height: "5%"}}>
       <ScrollView ref={scrollViewRef}
       onContentSizeChange={()=> scrollViewRef.current.scrollToEnd({animated: true})}>
       <FlatList
@@ -127,9 +129,12 @@ const scrollViewRef = useRef();
       </ScrollView>
       </View>
       <Variables>
-      	<View style={{height: "25%"}}>
+      	<View style={{height: "30%"}}>
+	<NumberDisplay history={history} val={val} />
+	{/*
 	<History history={history} />
 	<Current value={val} />
+	*/}
 	</View>
         {mode === "num" ? 
         (<Keypad 
@@ -159,12 +164,22 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: Black,
     //backgroundColor: "#40b1ed",
-    padding: 0,
-    marginVertical: 8,
+    paddingTop: 5,
+    paddingLeft: "5%",
+    paddingRight: "5%",
+    marginVertical: 5,
     marginHorizontal: 0,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-end"
   },
-  title: {
-    fontSize: 32,
+  input: {
+    fontSize: 24,
     color: White
   },
+  output: {
+    fontSize: 24,
+    color: White,
+    justifySelf: "flex-end",
+   }
 });
