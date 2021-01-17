@@ -3,29 +3,29 @@ import { TokenType } from "./types";
 const output: { [key: string]: TokenType } =  {
     "+": {
         display: "+",
-        associativity: "L", 
-        precedence: 0,
+        nargs: 2, 
+        precedence: 20,
         type: "operator",
         do: (a: number, b: number) => { return a + b; }
     },
     "-": {
         display: "-",
-        associativity: "L", 
-        precedence: 0,
+        nargs: 2, 
+        precedence: 20,
         type: "operator",
         do: (a: number, b: number) => { return a - b; }
     },
     "*": {
         display: "*",
-        associativity: "L", 
-        precedence: 0,
+        nargs: 2, 
+        precedence: 10,
         type: "operator",
         do: (a: number, b: number) => { return a * b; }
     },
     "/": {
         display: "/",
-        associativity: "L", 
-        precedence: 0,
+        nargs: 2, 
+        precedence: 10,
         type: "operator",
         do: (a: number, b: number) => { 
             if (b === 0) {
@@ -36,21 +36,21 @@ const output: { [key: string]: TokenType } =  {
     },
     "(": {
         display: "(",
-        associativity: "L", 
+        nargs: 0,
         type: "parenthesis",
         precedence: 0,
         do: () => { return ; }
     },
     ")": {
         display: ")",
-        associativity: "L", 
+        nargs: 0, 
         type: "parenthesis",
         precedence: 0,
         do: () => { return ; }
     },
     "": {
         display: "",
-        associativity: "L", 
+        nargs: 0, 
         type: "operator",
         precedence: 0,
         do: () => { return ; }

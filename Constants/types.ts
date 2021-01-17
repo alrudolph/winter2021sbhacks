@@ -1,10 +1,10 @@
 export interface Types {
-    type: "operator" | "number" | "digit" | "DigitBuilder" | "parenthesis";
+    type: "operator" | "number" | "digit" | "DigitBuilder" | "parenthesis" | "variable";
     display: string;
 }
   
 export type TokenType = Types & {
-    associativity: "R" | "L",
+    nargs: number,
     precedence: number,
     do: Function
 };

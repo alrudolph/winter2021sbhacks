@@ -60,7 +60,7 @@ const digits: Record<number | ".", DigitType> = {
 };
 
 export class DigitBuilder implements Types {
-    private value = "";
+    readonly value: number;
     private hasDecimal;
 
     readonly type = "DigitBuilder";
@@ -68,7 +68,7 @@ export class DigitBuilder implements Types {
 
     constructor(n: { display: string, value: string, type: "DigitBuilder" }) {
         this.display = "" + n.value;
-        this.value = "" + n.value;
+        this.value = Number(n.value);
 
         this.hasDecimal = String(n.value).includes(".");
     }

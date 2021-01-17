@@ -18,6 +18,7 @@ import { Variables } from './Constants/Variables';
 
 import Current from './Displays/Current';
 import History from './Displays/History';
+import calculator from "./Constants/calculator";
 
 const Body = styled.View`
   width: 100%;
@@ -31,58 +32,12 @@ type stored = {
 }
 
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'},
-  {title: 'beans'}
-];
-
-
 const Item = ({ title }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
   </View>
 );
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    height: "25%"
-  },
-  item: {
-    backgroundColor: Black,
-    padding: 0,
-    marginVertical: 8,
-    marginHorizontal: 0,
-  },
-  title: {
-    fontSize: 32,
-    color: White
-  },
-});
 
 export default function App() {
   const [mode, setMode] = useState("num");
@@ -131,8 +86,7 @@ export default function App() {
   }
 
   const evaluateQueue = () => {
-    return history;
-//    return Number(eval(history));
+    return calculator(queue);
   }
 
   const equals = () => {
@@ -190,3 +144,21 @@ const scrollViewRef = useRef();
     </Body>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    height: "25%"
+  },
+  item: {
+    backgroundColor: Black,
+    //backgroundColor: "#40b1ed",
+    padding: 0,
+    marginVertical: 8,
+    marginHorizontal: 0,
+  },
+  title: {
+    fontSize: 32,
+    color: White
+  },
+});

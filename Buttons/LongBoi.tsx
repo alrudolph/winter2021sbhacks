@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableHighlight, tyleSheet, Text, View } from 'react-native';
 
 import styled from 'styled-components/native';
@@ -28,11 +28,16 @@ type CircleInput = {
 };
 
 export default function LongBoi({ color, text, onTouch }: CircleInput) {
+  const [touched, setTouched] = useState(false);
+
   return (
       <Circ 
-        onPress={() => { onTouch(); }} 
-        color={color.primary} 
-        underlayColor={color.secondary}
+        onPress={() => { 
+          setTouched(!touched);
+          onTouch(); 
+        }} 
+        color={touched ? color.secondary : color.primary} 
+        underlayColor={touched ? color.primary : color.secondary}
         activeOpacity={1}>
           <Display color={White}>{text}</Display>
       </Circ>
