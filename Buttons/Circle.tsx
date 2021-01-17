@@ -1,8 +1,14 @@
 import React from 'react';
-import { TouchableHighlight, tyleSheet, Text, View } from 'react-native';
+import { Dimensions, TouchableHighlight, tyleSheet, Text, View } from 'react-native';
 
 import styled from 'styled-components/native';
 import { White } from '../Constants/Palette';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+const cbw = Math.round(windowWidth * .20);
+const cbh = Math.round(windowHeight * .10);
+const cbdim = Math.min(cbw, cbh);
 
 const Display = styled.Text`
   color: ${(props: {color: string}) => props.color};
@@ -11,10 +17,8 @@ const Display = styled.Text`
 
 const Circ = styled.TouchableHighlight`
   background-color: ${({color}: {color: string}) => color};
-  border-radius: 50px;
+  border-radius: 50%;
 
-  height: 75px;
-  width: 75px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +37,11 @@ export default function Circle({ color, text, onTouch }: CircleInput) {
         onPress={() => { onTouch(); }} 
         color={color.primary} 
         underlayColor={color.secondary}
-        activeOpacity={1}>
+        activeOpacity={1}
+	style={{
+		width: cbdim,
+		height: cbdim,
+	}}>
           <Display color={White}>{text}</Display>
       </Circ>
   );
