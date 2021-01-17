@@ -62,6 +62,53 @@ const output: { [key: string]: TokenType } =  {
 	precedence: 5,
 	do: (a: number, b: number) => { return Math.pow(a, b); }
    },
+   "ln": {
+   		display: "ln",
+		nargs: 1,
+		type: "operator",
+		function: true,
+		precedence: 3,
+		do: (a: number) => {
+			if (a <= 0) {
+				throw 'Cannot ln nonpositive numbers.';
+			}
+			return Math.log(a);
+		}
+	},
+	"sin": {
+		display: "sin",
+		nargs: 1,
+		type: "operator",
+		function: true,
+		precedence: 3,
+		do: (a: number) => {return Math.sin(a);}
+	},
+	"cos": {
+		display: "cos",
+		nargs: 1,
+		type: "operator",
+		function: true,
+		precedence: 3,
+		do: (a: number) => {return Math.cos(a);}
+	},
+	"tan": {
+		display: "tan",
+		nargs: 1,
+		type: "operator",
+		function: true,
+		precedence: 3,
+		do: (a: number) => {return Math.tan(a);}
+	},
+	"pi": {
+		display: "π",
+		type: "variable",
+		value: Math.PI
+	},
+	"e": {
+		display: "e",
+		type: "variable",
+		value: Math.E
+	},
 }
 
 export default output;

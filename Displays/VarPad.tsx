@@ -8,6 +8,7 @@ import Circle from '../Buttons/Circle';
 import LongBoi from '../Buttons/LongBoi';
 
 import { VariablesContext } from "../Constants/Variables"
+import tokens from "../Constants/tokens";
 
 import { trunc } from '../Constants/numbers';
 import { cbdim } from '../Buttons/Circle';
@@ -16,7 +17,7 @@ const VarRow = styled.View`
 	flex-grow: 1;
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
+	justify-content: space-around;
 	align-items: flex-end;
 `;
 
@@ -100,8 +101,13 @@ export default function VarPad({append, back, currVal, currDisplay}: {append: Fu
 					)
 				})
 			}
-			<VarRow style={{flex: 1}}>
+			<VarRow style={{flex: 1 }}>
+				{/*
 				<View style={{width: "30%"}} />
+				*/}
+
+            			<Circle color={DarkGray} text="π" onTouch={() => {append(tokens["pi"])}} style={{marginRight: "auto"}}/>
+            			<Circle color={DarkGray} text="e" onTouch={() => {append(tokens["e"])}} style={{marginRight: "auto"}}/>
 				<ButtonPartLmao style={{justifyContent: "flex-end"}}>
 					<LongBoi color={Orange} text="Save" onTouch={() => { mode === "store" ? setMode("retreive") : setMode("store") }}
 						style={{alignSelf: "flex-end"}}/>

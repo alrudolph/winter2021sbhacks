@@ -76,7 +76,7 @@ export default function App() {
         appendQueue(new DigitBuilder(n));
       }
     }
-    else if (n.type === "operator" && lastElem && lastElem.type !== "operator") {
+    else if (n.type === "operator" && ((lastElem && lastElem.type !== "operator") || typeof n.function !== "undefined")) {
       appendQueue(n);
     }
     else if (n.type === "parenthesis") {

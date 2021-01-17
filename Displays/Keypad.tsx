@@ -19,7 +19,7 @@ const Display = styled.View`
 
 function Spacer(){
 	return (
-		<View style={{width: (dist + 0.5)}}>
+		<View style={{width: (dist + 0.6)}}>
 		</View>
 	);
 }
@@ -48,6 +48,15 @@ export default function Keypad({ append, clear, equals, showVar }: {append: Func
             <Circle color={Orange} text="÷" onTouch={() => {append(tokens["/"])}} />
 			{Spacer()}
             <Circle color={Orange} text="^" onTouch={() => {append(tokens["^"])}} />
+			{Spacer()}
+            <Circle color={Orange} text="sin" onTouch={() => {append(tokens["sin"])}} />
+			{Spacer()}
+            <Circle color={Orange} text="cos" onTouch={() => {append(tokens["cos"])}} />
+			{Spacer()}
+            <Circle color={Orange} text="tan" onTouch={() => {append(tokens["tan"])}} />
+			{Spacer()}
+            <Circle color={Orange} text="ln" onTouch={() => {append(tokens["ln"])}} />
+			{Spacer()}
 			</ScrollView>
         </Row>
         <Row>

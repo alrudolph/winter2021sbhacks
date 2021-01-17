@@ -15,7 +15,7 @@ const Circ = styled.TouchableHighlight`
   border-radius: 30px;
 
   height: 75px;
-  width: 200px;
+  width: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,7 +42,7 @@ export default function LongBoi({ color, text, onTouch }: CircleInput) {
         activeOpacity={1}
 	style={{
 		height: cbdim,
-		width: Math.round(2.67 * cbdim),
+		width: Math.round(2 * cbdim),
 		borderRadius: Math.round(0.4 * cbdim),
 	}}
 	>
