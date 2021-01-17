@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { ScrollView, SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 
 import Keypad from './Displays/Keypad';
 import NumberDisplay from './Displays/NumberDisplay';
@@ -7,7 +7,7 @@ import Circle from './Buttons/Circle';
 
 import styled from 'styled-components/native';
 
-import { Black, LightGray } from './Constants/Palette'
+import { White, Black, LightGray } from './Constants/Palette'
 import VarPad from './Displays/VarPad';
 import { VarView } from './Displays/VarPad';
 
@@ -17,11 +17,14 @@ import output from './Constants/tokens';
 import { Variables } from './Constants/Variables';
 
 import calculator, {addParenthesis} from "./Constants/calculator";
+import Current from './Displays/Current';
+import History from './Displays/History';
 
 const Body = styled.View`
   width: 100%;
   height: 100%;
   background-color: ${Black};
+  padding: 2.5%;
 `
 type stored = {
   queue: Array<Types>,
@@ -29,11 +32,21 @@ type stored = {
   val: string
 }
 
+
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
+
+
 export default function App() {
   const [mode, setMode] = useState("num");
 
   const defaultState: stored = { queue: [], history: "", val: ""};
   const [{ queue, history, val }, setExpression] = useState(defaultState);
+
+  const [prev, setPrev] = useState([]);
 
   useEffect(() => {
     const output = queue.reduce((acc, curr) => acc + curr.display, "");
@@ -82,6 +95,10 @@ export default function App() {
 
   const equals = () => {
     setExpression({ queue: addParenthesis([...queue]), history, val: trunc(evaluateQueue())});
+
+    let updatedPrev = [...prev];
+    updatedPrev.push({title: history});
+    setPrev(updatedPrev);
   }
   
   const showVar = () => {
@@ -92,10 +109,28 @@ export default function App() {
     setMode("num");
   }
 
+const renderItem = ({ item }) => (
+    <Item title={item.title} />
+  );
+ 
+const scrollViewRef = useRef();
+
   return (
     <Body>
+      <View style={{height: "10%"}}>
+      <ScrollView ref={scrollViewRef}
+      onContentSizeChange={()=> scrollViewRef.current.scrollToEnd({animated: true})}>
+      <FlatList
+        data={prev}
+        renderItem={renderItem}
+      />
+      </ScrollView>
+      </View>
       <Variables>
-        <NumberDisplay history={history} val={val}/>
+      	<View style={{height: "25%"}}>
+	<History history={history} />
+	<Current value={val} />
+	</View>
         {mode === "num" ? 
         (<Keypad 
             append={(input: Types) => { append(input); }}
@@ -115,3 +150,21 @@ export default function App() {
     </Body>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    height: "25%"
+  },
+  item: {
+    backgroundColor: Black,
+    //backgroundColor: "#40b1ed",
+    padding: 0,
+    marginVertical: 8,
+    marginHorizontal: 0,
+  },
+  title: {
+    fontSize: 32,
+    color: White
+  },
+});
