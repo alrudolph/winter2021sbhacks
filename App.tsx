@@ -113,9 +113,10 @@ const scrollViewRef = useRef();
 
   return (
     <Body>
-      <View style={{height: "50px"}}>
+      <View style={{height: "10%"}}>
       <ScrollView ref={scrollViewRef}
-      onContentSizeChange={()=> scrollViewRef.current.scrollToEnd({animated: true})}>
+      onContentSizeChange={()=> scrollViewRef.current.scrollToEnd({animated: true})}
+      style={{backgroundColor: 'red'}}>
       <FlatList
         data={prev}
         renderItem={renderItem}
@@ -123,8 +124,10 @@ const scrollViewRef = useRef();
       </ScrollView>
       </View>
       <Variables>
+      	<View style={{height: "25%"}}>
 	<History history={history} />
 	<Current value={val} />
+	</View>
         {mode === "num" ? 
         (<Keypad 
             append={(input: Types) => { append(input); }}
