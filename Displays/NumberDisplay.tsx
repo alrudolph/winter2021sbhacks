@@ -8,8 +8,8 @@ import History from './History';
 import PrevList from './PrevList';
 
 const Display = styled.View`
-  height: 30%;
   padding: 0 5%;
+  height: 30%;
 `
 
 export default function NumberDisplay({ history, val, prev } : {history: string, val:string, prev: string }) {

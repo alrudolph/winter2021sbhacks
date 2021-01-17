@@ -15,18 +15,19 @@ const VarRow = styled.View`
 	flex-grow: 1;
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
-	height: auto;
+	justify-content: flex-end;
+	align-items: flex-end;
 `;
 
-const VarDisplay = styled.Text`
-	width: 75%;
-	font-size: 50px;
-	color: ${White};
-
+const VarDisplay = styled.View`
+	width: 60%;
 	display: flex;
 	justify-content: flex-end;
 	align-items: flex-end;
+
+	borderBottomColor: ${White};
+	borderBottomWidth: 3px;
+	border-style: solid;
 `;
 
 const ButtonPartLmao = styled.View`
@@ -37,19 +38,16 @@ const ButtonPartLmao = styled.View`
 	width: 25%;
 `;
 
-const Divider = styled.View`
-	borderBottomColor: ${White};
-	borderBottomWidth: 1;
-	width: 75%;
+const DisplayText = styled.Text`
+	font-size: 50px;
+	color: ${White};
 `;
 
 const Display = styled.View`
-    display: flex;
+	display: flex;
     flex: 1;
-    height: 70%;
+	height: 70%;
 `;
-
-
 
 export function VarView({varName, store, retreive, mode, display, setMode}: {varName: string, store: Function, retreive: Function, mode:string, display: string, setMode:Function}){
 	const [varVal, setVarVal] = useState(display);
@@ -57,7 +55,9 @@ export function VarView({varName, store, retreive, mode, display, setMode}: {var
 	return (
 		<Display>
 			<VarRow>
-				<VarDisplay>{varVal}</VarDisplay>
+				<VarDisplay>
+					<DisplayText>{varVal}</DisplayText>
+				</VarDisplay>
 				<ButtonPartLmao>
 					<Circle color={LightGray} text={varName} onTouch={() => {
 						if (mode === "store") {
@@ -70,7 +70,6 @@ export function VarView({varName, store, retreive, mode, display, setMode}: {var
 					}}/>
 				</ButtonPartLmao>
 			</VarRow>
-			<Divider />
 		</Display>
 );}
 

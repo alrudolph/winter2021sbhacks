@@ -24,11 +24,11 @@ import History from './Displays/History';
 import { Item } from './Displays/Item';
 
 const Body = styled.View`
-width: 100%;
-height: 100%;
-background-color: ${Black};
-padding: 2.5%;
-display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: ${Black};
+  padding: 2.5%;
+  display: flex;
 `;
 
 type stored = {
@@ -104,25 +104,26 @@ export default function App() {
   const back = () => {
     setMode("num");
   }
+
   return (
     <Body>
       <Variables>
         <NumberDisplay history={history} val={val} prev={prev}/>
-        {mode === "num" ? 
-        (<Keypad 
-            append={(input: Types) => { append(input); }}
-            clear={() => { clear(); }}
-            equals={() => { equals(); }}
-              showVar={() => { showVar(); }}
-          />
-        ) : (
-          <VarPad 
-            append={(input: Types) => { append(input); }}
-            back={() => { back(); }}
-            currVal={evaluateQueue()}
-            currDisplay={val}
-          />
-        )}
+          {mode === "num" ? 
+          (<Keypad 
+              append={(input: Types) => { append(input); }}
+              clear={() => { clear(); }}
+              equals={() => { equals(); }}
+                showVar={() => { showVar(); }}
+            />
+          ) : (
+            <VarPad 
+              append={(input: Types) => { append(input); }}
+              back={() => { back(); }}
+              currVal={evaluateQueue()}
+              currDisplay={val}
+            />
+          )}
       </Variables>
     </Body>
   );
