@@ -4,8 +4,13 @@ import { Dimensions, TouchableHighlight, tyleSheet, Text, View } from 'react-nat
 import styled from 'styled-components/native';
 import { White } from '../Constants/Palette';
 
-const windowWidth = Dimensions.get('window').width;
+let windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+export let modifier = 1;
+if(windowWidth > windowHeight){
+	windowWidth *= 0.45;
+	modifier = 0;
+}
 const cbw = Math.round(windowWidth * .20);
 const cbh = Math.round(windowHeight * .10);
 export const cbdim = Math.min(cbw, cbh);

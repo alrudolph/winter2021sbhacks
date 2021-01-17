@@ -8,7 +8,7 @@ import Circle from '../Buttons/Circle';
 import tokens from "../Constants/tokens";
 import digits from "../Constants/numbers";
 
-import { cbdim, dist } from "../Buttons/Circle";
+import { cbdim, dist, modifier } from "../Buttons/Circle";
 import { paddingPx } from "../App";
 
 const Display = styled.View`
@@ -19,7 +19,7 @@ const Display = styled.View`
 
 function Spacer(){
 	return (
-		<View style={{width: (dist + 1)}}>
+		<View style={{width: (dist + modifier)}}>
 		</View>
 	);
 }
@@ -36,7 +36,7 @@ export default function Keypad({ append, clear, equals, showVar }: {append: Func
   return (
     <Display>
         <Row>
-			<ScrollView horizontal={true}>
+			<ScrollView horizontal={true} style={{height: cbdim + 1}}>
 			{Spacer()}
             <Circle color={LightGray} text="AC" onTouch={() => {clear()}} />
 			{Spacer()}
