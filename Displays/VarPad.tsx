@@ -102,7 +102,7 @@ export default function VarPad({append, back, currVal, currDisplay}: {append: Fu
 			<VarRow style={{flex: 1}}>
 				<View style={{width: "50%"}} />
 				<ButtonPartLmao style={{justifyContent: "flex-end"}}>
-					<LongBoi color={Orange} text="save" onTouch={() => { mode === "store" ? setMode("retreive") : setMode("store") }}
+					<LongBoi color={Orange} text="Save" onTouch={() => { mode === "store" ? setMode("retreive") : setMode("store") }}
 						style={{alignSelf: "flex-end"}}/>
 				</ButtonPartLmao>
 				<ButtonPartLmao>

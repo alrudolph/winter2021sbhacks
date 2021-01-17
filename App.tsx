@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ScrollView, SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { ScrollView, SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Dimensions } from 'react-native';
 
 import Keypad from './Displays/Keypad';
 import NumberDisplay from './Displays/NumberDisplay';
@@ -23,13 +23,22 @@ import History from './Displays/History';
 
 import { Item } from './Displays/Item';
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const Body = styled.View`
-  width: 100%;
   height: 100%;
   background-color: ${Black};
   padding: 2.5%;
+
   display: flex;
+  align-items: center;
 `;
+
+const Main = styled.View`
+  width: ${windowWidth > windowHeight ? 35 : 100}%;
+  height: 100%;
+`
 
 type stored = {
 queue: Array<Types>,
@@ -107,6 +116,7 @@ export default function App() {
 
   return (
     <Body>
+      <Main>
       <Variables>
         <NumberDisplay history={history} val={val} prev={prev}/>
           {mode === "num" ? 
@@ -125,6 +135,7 @@ export default function App() {
             />
           )}
       </Variables>
+      </Main>
     </Body>
   );
 }
