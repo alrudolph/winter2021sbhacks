@@ -1,19 +1,19 @@
 {
   "files": {
-    "app.js": "/alrudolph/winter2021sbhacks/static/js/app.e3e33462.chunk.js",
-    "app.js.map": "/alrudolph/winter2021sbhacks/static/js/app.e3e33462.chunk.js.map",
-    "runtime~app.js": "/alrudolph/winter2021sbhacks/static/js/runtime~app.817799e6.js",
-    "runtime~app.js.map": "/alrudolph/winter2021sbhacks/static/js/runtime~app.817799e6.js.map",
-    "static/js/2.202d079b.chunk.js": "/alrudolph/winter2021sbhacks/static/js/2.202d079b.chunk.js",
-    "static/js/2.202d079b.chunk.js.map": "/alrudolph/winter2021sbhacks/static/js/2.202d079b.chunk.js.map",
-    "index.html": "/alrudolph/winter2021sbhacks/index.html",
-    "manifest.json": "/alrudolph/winter2021sbhacks/manifest.json",
-    "serve.json": "/alrudolph/winter2021sbhacks/serve.json",
-    "static/js/2.202d079b.chunk.js.LICENSE.txt": "/alrudolph/winter2021sbhacks/static/js/2.202d079b.chunk.js.LICENSE.txt"
+    "app.js": "/winter2021sbhacks/static/js/app.e3e33462.chunk.js",
+    "app.js.map": "/winter2021sbhacks/static/js/app.e3e33462.chunk.js.map",
+    "runtime~app.js": "/winter2021sbhacks/static/js/runtime~app.0de23b27.js",
+    "runtime~app.js.map": "/winter2021sbhacks/static/js/runtime~app.0de23b27.js.map",
+    "static/js/2.803e559a.chunk.js": "/winter2021sbhacks/static/js/2.803e559a.chunk.js",
+    "static/js/2.803e559a.chunk.js.map": "/winter2021sbhacks/static/js/2.803e559a.chunk.js.map",
+    "index.html": "/winter2021sbhacks/index.html",
+    "manifest.json": "/winter2021sbhacks/manifest.json",
+    "serve.json": "/winter2021sbhacks/serve.json",
+    "static/js/2.803e559a.chunk.js.LICENSE.txt": "/winter2021sbhacks/static/js/2.803e559a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime~app.817799e6.js",
-    "static/js/2.202d079b.chunk.js",
+    "static/js/runtime~app.0de23b27.js",
+    "static/js/2.803e559a.chunk.js",
     "static/js/app.e3e33462.chunk.js"
   ]
 }
