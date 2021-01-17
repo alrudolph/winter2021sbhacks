@@ -7,8 +7,8 @@ import Current from './Current';
 import History from './History';
 
 const Display = styled.View`
-    height: 35%;
-    padding: 0 5%;
+  height: 35%;
+  padding: 0 5%;
 `
 
 export default function NumberDisplay({ history, val } : {history: string, val:string }) {

@@ -16,14 +16,15 @@ import { DigitBuilder, trunc } from "./Constants/numbers"
 import output from './Constants/tokens';
 import { Variables } from './Constants/Variables';
 
+import calculator, {addParenthesis} from "./Constants/calculator";
 import Current from './Displays/Current';
 import History from './Displays/History';
-import calculator from "./Constants/calculator";
 
 const Body = styled.View`
   width: 100%;
   height: 100%;
   background-color: ${Black};
+  padding: 2.5%;
 `
 type stored = {
   queue: Array<Types>,
@@ -51,14 +52,12 @@ export default function App() {
 
   useEffect(() => {
     const output = queue.reduce((acc, curr) => acc + curr.display, "");
-    setExpression({ queue: queue, history: output, val: val});
-
-    console.log(queue);
+    setExpression({ queue, history: output, val});
   }, [queue])
 
   const appendQueue = (n: Types) => {
     const newQ = [...queue, n];
-    setExpression({ queue: newQ, history: history, val: val });
+    setExpression({ queue: newQ, history, val });
   }
 
   const append = (n: Types) => {
@@ -66,7 +65,7 @@ export default function App() {
       const lastElem = queue.length > 0 ? queue[queue.length - 1] : null;
       if (lastElem !== null && lastElem.type == "DigitBuilder") {
         const newQ = [...queue.slice(0, queue.length - 1), lastElem.append(n)];
-        setExpression({ queue: newQ, history: history, val: val});
+        setExpression({ queue: newQ, history, val});
       }
       else {
         appendQueue(new DigitBuilder(n));
@@ -76,7 +75,12 @@ export default function App() {
       appendQueue(n);
     }
     else if (n.type === "parenthesis") {
-      appendQueue(n);
+      if (n.display === ")") {
+        setExpression({ queue: addParenthesis([...queue, n]), history, val });
+      }
+      else {
+        appendQueue(n);
+      }
     }
     else if (n.type === "variable") {
       appendQueue(n);
@@ -92,11 +96,11 @@ export default function App() {
   }
 
   const equals = () => {
+    setExpression({ queue: addParenthesis([...queue]), history, val: trunc(evaluateQueue())});
+
     let updatedPrev = [...prev];
     updatedPrev.push({input: history, output: trunc(evaluateQueue())});
     setPrev(updatedPrev);
-
-    setExpression({ queue: queue, history: history, val: trunc(evaluateQueue())});
   }
   
   const showVar = () => {

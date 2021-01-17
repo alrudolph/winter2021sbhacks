@@ -12,7 +12,7 @@ const rpn = (tokens: Array<Types>) => {
             operatorsStack.push('(');
         }
         else if (token.display === ")") {
-            while (operatorsStack[operatorsStack.length - 1] !== "(") {
+            while (operatorsStack.length && operatorsStack[operatorsStack.length - 1] !== "(") {
                 outputQueue.push(operatorsStack.pop())
             }
             operatorsStack.pop();
@@ -27,10 +27,37 @@ const rpn = (tokens: Array<Types>) => {
     });
 
     while (operatorsStack.length > 0) {
-        outputQueue.push(operatorsStack.pop())
+        const op = operatorsStack.pop()
+
+        if (op !== ")" && op !== "(") {
+            outputQueue.push(op);
+        }
     }
 
     return outputQueue;
+}
+
+export const addParenthesis = (tokens: Array<Types>) => {
+    let count = 0;
+
+    tokens.forEach((token) => {
+        if (token.type === "parenthesis") {
+            count += (token.display === ")" ? 1 : 0);
+            count -= (token.display === "(" ? 1 : 0);
+        }
+    })
+
+    while (count > 0) {
+        tokens.unshift({ type: "parenthesis", display: "(", precedence: 0 });
+        --count;
+    }
+
+    while (count < 0) {
+        tokens.push({ type: "parenthesis", display: ")", precedence: 0 })
+        ++count;
+    }
+    
+    return tokens;
 }
 
 const calculator = (tokens: Array<Types>) => {

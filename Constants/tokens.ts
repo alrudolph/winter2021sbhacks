@@ -16,14 +16,14 @@ const output: { [key: string]: TokenType } =  {
         do: (a: number, b: number) => { return a - b; }
     },
     "*": {
-        display: "*",
+        display: "×",
         nargs: 2, 
         precedence: 10,
         type: "operator",
         do: (a: number, b: number) => { return a * b; }
     },
     "/": {
-        display: "/",
+        display: "÷",
         nargs: 2, 
         precedence: 10,
         type: "operator",
