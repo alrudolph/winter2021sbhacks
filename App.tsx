@@ -59,8 +59,8 @@ export default function App() {
   }
 
   const append = (n: Types) => {
+    const lastElem = queue.length > 0 ? queue[queue.length - 1] : null;
     if (n.type === "digit") {
-      const lastElem = queue.length > 0 ? queue[queue.length - 1] : null;
       if (lastElem !== null && lastElem.type == "DigitBuilder") {
         const newQ = [...queue.slice(0, queue.length - 1), lastElem.append(n)];
         setExpression({ queue: newQ, history, val});
@@ -69,7 +69,7 @@ export default function App() {
         appendQueue(new DigitBuilder(n));
       }
     }
-    else if (n.type === "operator") {
+    else if (n.type === "operator" && lastElem && lastElem.type !== "operator") {
       appendQueue(n);
     }
     else if (n.type === "parenthesis") {

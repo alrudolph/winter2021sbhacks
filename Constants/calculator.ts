@@ -18,7 +18,7 @@ const rpn = (tokens: Array<Types>) => {
             operatorsStack.pop();
         }
         else {
-            while (operatorsStack.length > 0 && operatorsStack[operatorsStack.length - 1].precedence < token.precedence) {
+            while (operatorsStack.length > 0 && operatorsStack[operatorsStack.length - 1].precedence <= token.precedence) {
                 outputQueue.push(operatorsStack.pop())
                 console.log("LOOPING")
             }

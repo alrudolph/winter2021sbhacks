@@ -13,6 +13,9 @@ const Display = styled.Text`
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    justifyContent: flex-end;
+    alignItems: flex-end;
+    alignSelf: flex-end;
 `;
 
 export default function Current({ value }: {value: string}) {
