@@ -46,7 +46,7 @@ const Divider = styled.View`
 const Display = styled.View`
     display: flex;
     flex: 1;
-    height: 60%;
+    height: 70%;
 `;
 
 

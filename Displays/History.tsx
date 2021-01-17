@@ -6,7 +6,7 @@ import { White } from '../Constants/Palette';
 
 const Display = styled.Text`
     width: 100%;
-    height: 40%;
+    height: 25%;
     font-size: 40px;
     color: ${White}
 `;

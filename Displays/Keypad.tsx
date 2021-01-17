@@ -9,7 +9,7 @@ import tokens from "../Constants/tokens";
 import digits from "../Constants/numbers";
 
 const Display = styled.View`
-    height: 65%;
+    height: 70%;
     display: flex;
     justify-content: space-evenly;
 `

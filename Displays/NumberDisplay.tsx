@@ -5,15 +5,17 @@ import styled from 'styled-components/native';
 
 import Current from './Current';
 import History from './History';
+import PrevList from './PrevList';
 
 const Display = styled.View`
   height: 30%;
   padding: 0 5%;
 `
 
-export default function NumberDisplay({ history, val } : {history: string, val:string }) {
+export default function NumberDisplay({ history, val, prev } : {history: string, val:string, prev: string }) {
   return (
     <Display>
+        <PrevList prev={prev}/>
         <History history={history}/>
         <Current value={val}/>
     </Display>

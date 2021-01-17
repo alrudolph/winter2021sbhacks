@@ -23,7 +23,7 @@ import calculator, {addParenthesis} from "./Constants/calculator";
 	 import History from './Displays/History';
  */
 
-import { Item } from './Displays/PrevList';
+import { Item } from './Displays/Item';
 
 const Body = styled.View`
 width: 100%;
@@ -41,7 +41,7 @@ queue: Array<Types>,
 
 export default function App() {
   const [mode, setMode] = useState("num");
-  const [prev, setPrev] = useState([]);
+  const [prev, setPrev] = useState([{}]);
 
   const defaultState: stored = { queue: [], history: "", val: ""};
   const [{ queue, history, val }, setExpression] = useState(defaultState);
@@ -93,11 +93,10 @@ export default function App() {
   }
 
   const equals = () => {
-    setExpression({ queue: addParenthesis([...queue]), history, val: trunc(evaluateQueue())});
+    const nextVal = trunc(evaluateQueue());
+    setExpression({ queue: addParenthesis([...queue]), history, val: nextVal});
 
-    let updatedPrev = [...prev];
-    updatedPrev.push({input: history, output: trunc(evaluateQueue())});
-    setPrev(updatedPrev);
+    setPrev([...prev, {input: history, output: nextVal}]);
   }
   
   const showVar = () => {
@@ -107,28 +106,10 @@ export default function App() {
   const back = () => {
     setMode("num");
   }
-
-const renderItem = ({ item, output}) => (
-    <Item input={item.input} output={item.output}/>
-  );
- 
-const scrollViewRef = useRef();
-
   return (
     <Body>
-      <View style={{height: "5%"}}>
-      <ScrollView ref={scrollViewRef}
-      onContentSizeChange={()=> scrollViewRef.current.scrollToEnd({animated: true})}>
-      <FlatList
-        data={prev}
-        renderItem={renderItem}
-      />
-      </ScrollView>
-      </View>
       <Variables>
-      	<View style={{height: "30%"}}>
-	<NumberDisplay history={history} val={val} />
-	</View>
+        <NumberDisplay history={history} val={val} prev={prev}/>
         {mode === "num" ? 
         (<Keypad 
             append={(input: Types) => { append(input); }}
