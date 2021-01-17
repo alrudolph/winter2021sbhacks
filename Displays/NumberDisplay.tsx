@@ -9,6 +9,7 @@ import PrevList from './PrevList';
 
 const Display = styled.View`
   padding: 0 5%;
+
   height: 30%;
 `
 

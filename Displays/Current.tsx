@@ -21,7 +21,7 @@ const Display = styled.Text`
 export default function Current({ value }: {value: string}) {
   return (
     <TextArea>
-      <Display>{value}</Display>  
+      <Display style={{zIndex: 10}}>{value}</Display>  
     </TextArea>
   );
 }

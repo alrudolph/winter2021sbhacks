@@ -4,6 +4,7 @@ import { TouchableHighlight, tyleSheet, Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import { White } from '../Constants/Palette';
 
+import { cbdim } from './Circle';
 const Display = styled.Text`
   color: ${(props: {color: string}) => props.color};
   font-size: 32px;
@@ -38,7 +39,13 @@ export default function LongBoi({ color, text, onTouch }: CircleInput) {
         }} 
         color={touched ? color.secondary : color.primary} 
         underlayColor={touched ? color.primary : color.secondary}
-        activeOpacity={1}>
+        activeOpacity={1}
+	style={{
+		height: cbdim,
+		width: Math.round(2.67 * cbdim),
+		borderRadius: Math.round(0.4 * cbdim),
+	}}
+	>
           <Display color={White}>{text}</Display>
       </Circ>
   );
