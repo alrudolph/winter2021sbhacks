@@ -91,7 +91,7 @@ export class DigitBuilder implements Types {
 export default digits;
 
 export const trunc = (val: number)=> {
-    return val ? Math.round(val * 1000) / 1000 + "" : "";
+    return val ? Math.round(val * 1000) / 1000 + "" : "0";
 }
 
 /*
