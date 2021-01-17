@@ -29,7 +29,7 @@ const output: { [key: string]: TokenType } =  {
         type: "operator",
         do: (a: number, b: number) => { 
             if (b === 0) {
-                throw 'Division by zero';
+                throw 'Cannot divide by zero.';
             }
             return a / b;
         }

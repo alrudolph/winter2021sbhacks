@@ -36,7 +36,7 @@ const Body = styled.View`
 `;
 
 const Main = styled.View`
-  width: ${windowWidth > windowHeight ? 35 : 100}%;
+  width: ${windowWidth > windowHeight ? 45 : 100}%;
   height: 100%;
 `
 
