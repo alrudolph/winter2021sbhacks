@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/winter2021sbhacks/static/js/app.e3e33462.chunk.js",
-    "app.js.map": "/winter2021sbhacks/static/js/app.e3e33462.chunk.js.map",
+    "app.js": "/winter2021sbhacks/static/js/app.72bbacb5.chunk.js",
+    "app.js.map": "/winter2021sbhacks/static/js/app.72bbacb5.chunk.js.map",
     "runtime~app.js": "/winter2021sbhacks/static/js/runtime~app.0de23b27.js",
     "runtime~app.js.map": "/winter2021sbhacks/static/js/runtime~app.0de23b27.js.map",
     "static/js/2.803e559a.chunk.js": "/winter2021sbhacks/static/js/2.803e559a.chunk.js",
@@ -14,6 +14,6 @@
   "entrypoints": [
     "static/js/runtime~app.0de23b27.js",
     "static/js/2.803e559a.chunk.js",
-    "static/js/app.e3e33462.chunk.js"
+    "static/js/app.72bbacb5.chunk.js"
   ]
 }
