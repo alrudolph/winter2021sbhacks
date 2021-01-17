@@ -17,7 +17,7 @@ const Display = styled.Text`
 
 export default function Current({ value }: {value: string}) {
   return (
-    <Display>
+    <Display style={{justifyContent: 'flex-end', alignSelf: 'flex-end'}}>
         {value}
     </Display>
   );
