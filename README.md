@@ -29,5 +29,6 @@ Before SBhacks7, I knew practically nothing about app development. Thanks to my 
 We set up the evaluation of expressions and functionality of buttons to take in a general operation object and apply it accordingly. This means that adding more functions such as trigonometric functions, exponential functions, etc… would be very easy to implement in the future. Currently our app works in the vertical orientation, and we are looking to add more buttons and operations when in horizontal mode.
 
 Members:
-Matthew Ho
-Alex Rudolph
+
+- Matthew Ho
+- Alex Rudolph
